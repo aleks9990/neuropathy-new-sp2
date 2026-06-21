@@ -12379,6 +12379,10 @@ body.dom-pending * {
     grid-template-columns: repeat(4, 1fr);
     gap: 8px;
   }
+  #nv-hero .nv-hero-gifts {
+    width: 100%;
+    margin: 8px 0 14px;
+  }
   #nv-hero .nv-offer-cta {
     margin-top: 16px;
   }
@@ -12453,11 +12457,85 @@ body.dom-pending * {
     margin-top: 8px;
     color: #073b63;
   }
+  #nv-hero .nv-gift-lock {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 7;
+    width: 30px;
+    height: 24px;
+    transform: translate(-50%, -42%);
+    border-radius: 5px;
+    background: #596472;
+    box-shadow: 0 4px 12px rgba(23, 34, 46, .22);
+  }
+  #nv-hero .nv-gift-lock:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -14px;
+    width: 18px;
+    height: 17px;
+    transform: translateX(-50%);
+    border: 4px solid #596472;
+    border-bottom: 0;
+    border-radius: 13px 13px 0 0;
+    box-sizing: border-box;
+  }
+  #nv-hero .nv-gift-lock:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    width: 5px;
+    height: 8px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: 0 5px 0 -1px #fff;
+  }
+  #nv-hero .nv-gift-ebook.is-locked .nv-gift-card {
+    background: #eef1f4 !important;
+    border-color: #c2cad2 !important;
+  }
+  #nv-hero .nv-gift-ebook.is-locked .nv-gift-card:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    border-radius: 7px;
+    background: rgba(238, 241, 244, .72);
+    pointer-events: none;
+  }
+  #nv-hero .nv-gift-ebook.is-locked .nv-gift-img {
+    filter: grayscale(1) saturate(0) !important;
+    opacity: .38 !important;
+  }
+  #nv-hero .nv-gift-ebook.is-locked .nv-gift-ribbon {
+    background: #6b7480 !important;
+    z-index: 9 !important;
+  }
+  #nv-hero .nv-gift-ebook.is-locked .nv-gift-card {
+    min-height: inherit;
+  }
+  #nv-hero .nv-gift-ebook.is-locked .nv-gift-name {
+    color: #6b7480 !important;
+  }
+  #nv-hero .nv-gift-ebook.is-locked .nv-gift-lock {
+    display: block;
+  }
+  #nv-hero .nv-gift-ebook:not(.is-locked) .nv-gift-img {
+    object-fit: contain !important;
+    padding: 8px !important;
+    box-sizing: border-box !important;
+  }
   @media (max-width: 1024px) and (min-width: 769px) {
     #nv-hero .nv-sale-title { font-size: 34px !important; }
     #nv-hero .nv-pack-title { font-size: 18px; }
-    #nv-hero .nv-gift-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    #nv-hero .nv-gift-card { height: 104px; min-height: 104px; padding: 0; }
+    #nv-hero .nv-gift-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+    #nv-hero .nv-gift-card { height: 96px; min-height: 96px; padding: 0; }
+    #nv-hero .nv-gift-name { font-size: 11px; line-height: 1.12; }
   }
   @media (max-width: 768px) {
     #nv-hero .nv-sale-title { font-size: 36px !important; line-height: 1.12; margin-bottom: 12px; }
@@ -12618,7 +12696,7 @@ body.dom-pending * {
   }
   #nv-hero .nv-amla-benefits {
     width: 100%;
-    max-width: 392px;
+    max-width: none;
     background: #EAF6FD;
     border: 0;
     padding: 15px 18px;
@@ -12881,8 +12959,6 @@ body.dom-pending * {
     text-decoration: none;
     margin: 0 auto;
   }
-  #nv-hero .nv-gift-lead,
-  #nv-hero .nv-gift-grid,
   #nv-hero .nv-sale-note {
     display: none !important;
   }
@@ -13143,6 +13219,69 @@ body.dom-pending * {
     align-self: start !important;
     z-index: 2 !important;
   }
+  #nv-hero .nv-hero-gallery {
+    display: grid !important;
+    grid-template-columns: 34px minmax(0, 1fr) 34px !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 520px !important;
+    margin: 10px auto 0 !important;
+  }
+  #nv-hero .nv-hero-gallery-window {
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+  #nv-hero .nv-hero-gallery-track {
+    display: flex !important;
+    gap: 8px !important;
+    transition: transform .22s ease !important;
+    will-change: transform !important;
+  }
+  #nv-hero .nv-hero-gallery-arrow {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 34px !important;
+    height: 34px !important;
+    border: 1px solid #d7e3e8 !important;
+    border-radius: 999px !important;
+    background: #fff !important;
+    color: #052f55 !important;
+    font-size: 25px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    box-shadow: 0 3px 8px rgba(5, 47, 85, .10) !important;
+  }
+  #nv-hero .nv-hero-gallery-arrow:disabled {
+    opacity: .38 !important;
+    cursor: default !important;
+  }
+  #nv-hero .nv-hero-gallery-btn {
+    display: block !important;
+    flex: 0 0 calc((100% - 24px) / 4) !important;
+    width: calc((100% - 24px) / 4) !important;
+    aspect-ratio: 1 / 1 !important;
+    padding: 0 !important;
+    border: 1px solid #d7e3e8 !important;
+    border-radius: 8px !important;
+    background: #fff !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+    box-shadow: none !important;
+  }
+  #nv-hero .nv-hero-gallery-btn.is-active {
+    border-color: #052f55 !important;
+    box-shadow: inset 0 0 0 1px #052f55 !important;
+  }
+  #nv-hero .nv-hero-gallery-btn img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 7px !important;
+    object-fit: cover !important;
+  }
 }
 @media (max-width: 768px) {
   #nv-hero .nv-hero-img {
@@ -13237,7 +13376,7 @@ body.dom-pending * {
   }
 
   #nv-hero .nv-hero-content {
-    width: calc(100% - 72px) !important;
+    width: calc(100% - 48px) !important;
     max-width: 648px !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -13458,7 +13597,7 @@ body.dom-pending * {
 
 @media (max-width: 390px) {
   #nv-hero .nv-hero-content {
-    width: calc(100% - 72px) !important;
+    width: calc(100% - 48px) !important;
   }
 
   #nv-hero .nv-sale-proof {
@@ -13732,7 +13871,757 @@ body.dom-pending * {
     text-decoration: line-through !important;
   }
 }
-</style></head><body class=" dom-pending"><div id="nv-page-top"></div><div id="nv-spring-banner" style="margin: 0px; padding: 0px; line-height: 0;"><a href="#nv-best-offer" style="display:block;" id="cc-id-FJq2HurPKM6d" data-id="fkt-link-6c2-c91-b99" title="" target="_self" action="choose" align="center" animate="" speed="" delay="" loop="none" variantvalue="" data-secondsdelay="" data-minutesdelay="" replaceproductid="" billnow="false" offer="" upsell="" quantity="" price=""><img src="https://assets.imagehub.io/8c9e1110-8218-11ef-a556-ffaacc6dbefa/1774953663986_cartoon_version_without_text_desktop_version.webp" alt="Spring Sale &mdash; Up to 67% Off" class="fk-disable-lazy nv-banner-desktop" style="width:100%;height:auto;display:block;cursor:pointer;" id="cc-id-nipYEy9bEBt4" title="" href="" onclick="" target="_self" align="center" width="" height=""><img src="https://assets.imagehub.io/8c9e1110-8218-11ef-a556-ffaacc6dbefa/1774953792222_cartoon_version_without_text_mobile_version.webp" alt="Spring Sale &mdash; Up to 67% Off" class="fk-disable-lazy nv-banner-mobile" style="width:100%;height:auto;display:none;cursor:pointer;" id="cc-id-eY0hH0ra8tv8" title="" href="" onclick="" target="_self" align="center" width="" height=""></a></div><div id="nv-sticky-header"><div id="nv-sticky-inner"><img class="fk-disable-lazy nv-hdr-logo" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1769431998534_Product_name.webp" alt="Nurovita" id="cc-id-SoJrBSZytZyg" title="" href="" onclick="" target="_self" align="center" width="" height=""><a class="nv-hdr-cta" href="#nv-page-top" id="cc-id-q9AuIweQvpqt" data-id="fkt-link-b00-496-ae3" title="CLAIM MY DISCOUNT" target="_self" action="choose" align="center" animate="" speed="" delay="" loop="none" variantvalue="" data-secondsdelay="" data-minutesdelay="" replaceproductid="" billnow="false" offer="" upsell="" quantity="" price=""><span class="rte-styled-text" id="cc-id-onOz8jlom1jY">CLAIM MY DISCOUNT&nbsp;<i class="fas fa-arrow-right" id="cc-id-9XTWbgwoKCq4"></i></span></a></div></div><div id="nv-hero"><div class="nv-hero-grid" id="cc-id-pe71Sw27BPvp"><!-- LEFT: Product Image --><div class="nv-hero-img" id="cc-id-jeRx1TpOBarP"><img class="fk-disable-lazy" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1773316412222_hf_20260225_121430_6d45e93d_48b3_4c3f_a918_484e97ad0858.webp" alt="Natural Cooling Roller" id="cc-id-27wPdSlq6v3J" title="" href="" onclick="" target="_self" align="center" width="" height=""><img src="https://assets.imagehub.io/8c9e1110-8218-11ef-a556-ffaacc6dbefa/1775825101659_Customer_Review.webp" alt="Customer review" class="fk-disable-lazy nv-hero-fb-comment"></div><!-- RIGHT: Content --><div class="nv-hero-content" id="cc-id-WAibwADXKQ5L"><div class="nv-sale-proof"><span class="nv-trust-stars" aria-label="5 stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span>Rated 4.8 / 5.0 | Excellent</span></div><h1 class="nv-sale-title">Natural Cooling Roller</h1><p class="nv-sale-subtitle">Strengthens your vessel walls to ease heaviness, reduce swelling, and calm inflammation at the source.</p><div class="nv-amla-benefits" aria-label="Nurovita key benefits"><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Vessel Walls</b> – Your legs holding fluid back again</span></div><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Collagen</b> – Supports healthy vessel strength naturally</span></div><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Swelling</b> – Supports lighter ankles and calves</span></div><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Circulation</b> – Supports healthy fluid flow in your legs</span></div></div><div class="nv-pack-grid nv-pack-grid-reference" aria-label="Choose your Nurovita pack"><a class="nv-pack-card nv-pack-side" href="#nv-best-offer" data-pack="1" aria-pressed="false"><span class="nv-pack-title">Buy One</span><img class="nv-pack-img fk-disable-lazy" src="1x.png" alt="1 Nurovita Cooling Roller"><span class="nv-pack-save">Save $10.00</span><span class="nv-pack-price">$29.99</span><span class="nv-pack-compare">$39.99</span></a><a class="nv-pack-card nv-pack-featured is-selected" href="#nv-best-offer" data-pack="3" aria-pressed="true"><span class="nv-pack-badge">Most Popular</span><span class="nv-pack-title">Buy 2 Get<br>1 <strong>FREE</strong></span><img class="nv-pack-img fk-disable-lazy" src="3x.png" alt="3 Nurovita Cooling Rollers"><span class="nv-pack-save">Save $20.00</span><span class="nv-pack-price">$59.99</span><span class="nv-pack-compare">$79.99</span></a><a class="nv-pack-card nv-pack-side" href="#nv-best-offer" data-pack="4" aria-pressed="false"><span class="nv-pack-badge nv-pack-soft-badge">Free Shipping</span><span class="nv-pack-title">Buy 3 Get<br>2 <strong>FREE</strong></span><img class="nv-pack-img fk-disable-lazy" src="5x.png" alt="5 Nurovita Cooling Rollers"><span class="nv-pack-save">Save $30.00</span><span class="nv-pack-price">$89.99</span><span class="nv-pack-compare">$119.99</span></a></div><div class="nv-stock-line"><span class="nv-stock-dot" aria-hidden="true"></span><span>In Stock, ready to ship - arrives by June 20th</span></div><a class="nv-hero-cta nv-offer-cta" href="#">Get 67% Off Today <span class="nv-hero-cta-arrow">&#8594;</span></a><p class="nv-subscribe-note">By default, your selected package will continue to be shipped and billed automatically (every 1 or 2 months) unless you choose to skip, pause, cancel, or select the one-time purchase option below.</p><div class="nv-checkout-strip"><span class="nv-checkout-label"><img class="nv-checkout-icon fk-disable-lazy" src="https://alevia.com/cdn/shop/files/shipment-icon.svg?v=1769882221" alt="" aria-hidden="true">Fast Delivery</span><span class="nv-checkout-label"><img class="nv-checkout-icon fk-disable-lazy" src="https://alevia.com/cdn/shop/files/checkout-icon.svg?v=1769882221" alt="" aria-hidden="true">Secure Checkout</span><img class="nv-payment-badges fk-disable-lazy" src="https://alevia.com/cdn/shop/files/Alevia-Payment-Badges_8d92cedb-2466-4afd-a730-3f1cd34ea9a1.webp?v=1764053470" alt="Accepted payment methods"></div><ul class="nv-afterpay-list" aria-label="Auto refill benefits"><li>Refilled every month</li><li>Skip, Pause, or Cancel Anytime</li></ul></div></div></div><div data-text="text" data-secondsdelay="" id="cc-id-mAUWVRDCdeMi"></div><div class="fk-row" id="cc-id-cEIQNJ2wSdor" style="display: none;"></div><div class="fk-row" id="cc-id-nV2O6v668UyQ" data-cc-tablet="false" data-cc-mobilelarge="false" data-cc-mobile="false" style="display: none;"></div><div data-secondsdelay="" id="ir69t" class="fk-row"><div align="center" data-secondsdelay="" id="i4b3x" class="fk-col col"><grammarly-extension data-grammarly-shadow-root="true" class="dnXmp" style="position: absolute; top: 0px; left: 0px; --rem: 16;" id="cc-id-E7aTwqwllfIh"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" class="dnXmp" style="position: absolute; top: 0px; left: 0px; --rem: 16;" id="cc-id-ywdCJg4ZgxR8"></grammarly-extension><img class="fk-image-defaults fk-disable-lazy" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1770978453721_withoutclockphone.webp" id="cc-id-VmlKxIgUIi34" title="" href="" onclick="" target="_self" alt="" align="center" width="" height="" style="display: none;" data-cc-desktop="false"><img class="fk-image-defaults fk-disable-lazy" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1770978478262_withoutclockdesktop.webp" id="cc-id-KBUfBXcjY9ut" title="" href="" onclick="" target="_self" align="center" width="" height="" data-cc-tabletlarge="false" data-cc-tablet="false" data-cc-mobilelarge="false" data-cc-mobile="false" style="display: none;"><div data-box="true" data-secondsdelay="" id="i0n4k" style="display: none;"><div data-text="text" data-secondsdelay="" id="i49fr"><span class="font-FFFFFFFF cc-rte-styled rte-styled-text" id="cc-id-pc8HHBpQNpOQ">THE "LIGHTER LEGS OR MONEY BACK" 90-DAY GUARANTEE </span><br class="rte-styled-text" id="cc-id-I5vnZJKGG3yE"></div></div><div data-box="true" data-secondsdelay="" id="i3m14h" style="display: none;"><img id="fkt-image-bbb-aa3-ac3" title="" target="_self" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1765865791586_Product_name.webp" href="" align="center" alt="" width="" height="" onclick="" class="fk-image-defaults fk-disable-lazy disable-fk-lazy" style=""><div data-box="true" data-secondsdelay="" id="ieb4r7b" class="contained"><div data-box="true" data-secondsdelay="" id="i2udwks"><div data-text="text" data-secondsdelay="" id="iutn2x" style="font-size: 40px !important;" spellcheck="false"><div class="rte-styled-text" id="cc-id-jcRmiTefYKXK">
+</style><style id="nv-direct-response-intro-css">
+  #nv-dr-intro {
+    background: #fff;
+    font-family: Poppins, sans-serif;
+    color: #050505;
+    padding: 42px 20px 46px;
+    border-bottom: 1px solid #ece6df;
+  }
+  #nv-dr-intro .nv-dr-wrap {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  #nv-dr-intro .nv-dr-section {
+    margin: 0 auto 54px;
+  }
+  #nv-dr-intro .nv-dr-section:last-child {
+    margin-bottom: 0;
+  }
+  #nv-dr-intro .nv-dr-title {
+    max-width: 980px;
+    margin: 0 auto 24px;
+    color: #050505;
+    font-size: 42px;
+    line-height: 1.26;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-align: center;
+  }
+  #nv-dr-intro .nv-dr-title span {
+    color: inherit;
+  }
+  #nv-dr-intro .nv-dr-title-spaced {
+    margin-top: 0;
+  }
+  #nv-dr-intro .nv-dr-subtitle {
+    max-width: none;
+    margin: 0 0 24px;
+    color: #050505;
+    font-size: 24px;
+    line-height: 1.42;
+    font-weight: 400;
+    text-align: left;
+  }
+  #nv-dr-intro .nv-dr-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 380px;
+    align-items: center;
+    gap: 54px;
+  }
+  #nv-dr-intro .nv-dr-copy {
+    max-width: 560px;
+  }
+  #nv-dr-intro .nv-dr-hero-visual {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  #nv-dr-intro .nv-dr-result-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 28px;
+    filter: grayscale(1) contrast(.98) saturate(.15);
+  }
+  #nv-dr-intro .nv-dr-story {
+    max-width: none;
+    margin: 0;
+  }
+  #nv-dr-intro .nv-dr-story p {
+    margin: 0 0 28px;
+    color: #050505;
+    font-size: 24px;
+    line-height: 1.42;
+    font-weight: 400;
+  }
+  #nv-dr-intro .nv-dr-story .nv-dr-lead {
+    color: #050505;
+    font-size: 24px;
+    line-height: 1.42;
+    font-weight: 400;
+  }
+  #nv-dr-intro .nv-dr-story p:last-child {
+    margin-bottom: 0;
+  }
+  @media (min-width: 769px) and (max-width: 1200px) {
+    #nv-dr-intro {
+      padding: 38px 16px 42px;
+      overflow-x: hidden;
+    }
+    #nv-dr-intro .nv-dr-wrap {
+      width: calc(100% - 32px);
+      max-width: 940px;
+    }
+    #nv-dr-intro .nv-dr-title {
+      font-size: 36px;
+    }
+    #nv-dr-intro .nv-dr-subtitle {
+      font-size: 22px;
+      margin-bottom: 28px;
+    }
+    #nv-dr-intro .nv-dr-content {
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 38px;
+    }
+    #nv-dr-intro .nv-dr-hero-visual {
+      width: 100%;
+    }
+    #nv-dr-intro .nv-dr-story p {
+      font-size: 21px;
+      line-height: 1.45;
+    }
+  }
+  @media (max-width: 768px) {
+    #nv-dr-intro {
+      padding: 26px 14px 34px;
+      box-sizing: border-box;
+      width: 100vw !important;
+      max-width: 100vw !important;
+      overflow: hidden;
+    }
+    #nv-dr-intro .nv-dr-wrap {
+      width: 100% !important;
+      max-width: 520px !important;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #nv-dr-intro .nv-dr-section {
+      margin-bottom: 34px;
+    }
+    #nv-dr-intro .nv-dr-title,
+    #nv-dr-intro .nv-dr-subtitle,
+    #nv-dr-intro .nv-dr-content,
+    #nv-dr-intro .nv-dr-copy,
+    #nv-dr-intro .nv-dr-story,
+    #nv-dr-intro .nv-dr-hero-visual {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    #nv-dr-intro .nv-dr-title,
+    #nv-dr-intro .nv-dr-story p {
+      white-space: normal !important;
+      overflow-wrap: anywhere;
+    }
+    #nv-dr-intro .nv-dr-title {
+      font-size: 23px;
+      line-height: 1.22;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    #nv-dr-intro .nv-dr-subtitle {
+      font-size: 16.5px;
+      line-height: 1.5;
+      margin: 0 auto 18px;
+      text-align: center;
+    }
+    #nv-dr-intro .nv-dr-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    #nv-dr-intro .nv-dr-hero-visual {
+      box-sizing: border-box;
+      margin: 0 auto;
+      padding: 0;
+      order: 2;
+    }
+    #nv-dr-intro .nv-dr-result-img {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      border-radius: 8px;
+    }
+    #nv-dr-intro .nv-dr-copy {
+      order: 1;
+    }
+    #nv-dr-intro .nv-dr-story p {
+      font-size: 16.25px;
+      line-height: 1.54;
+      margin-bottom: 14px;
+    }
+    #nv-dr-intro .nv-dr-story .nv-dr-lead {
+      font-size: 17px;
+    }
+  }
+  @media (min-width: 769px) {
+    #nv-dr-intro {
+      padding: 44px 20px 54px !important;
+      background: #fff !important;
+    }
+    #nv-dr-intro .nv-dr-wrap {
+      max-width: 1040px !important;
+    }
+    #nv-dr-intro .nv-dr-section {
+      margin: 0 auto 62px !important;
+    }
+    #nv-dr-intro .nv-dr-section:last-child {
+      margin-bottom: 0 !important;
+    }
+    #nv-dr-intro .nv-dr-title {
+      max-width: 920px !important;
+      margin: 0 auto 34px !important;
+      color: #06182b !important;
+      font-size: 38px !important;
+      line-height: 1.18 !important;
+      font-weight: 800 !important;
+      text-align: center !important;
+    }
+    #nv-dr-intro .nv-dr-subtitle {
+      display: block !important;
+      margin: 0 0 22px !important;
+      color: #06182b !important;
+      font-size: 22px !important;
+      line-height: 1.45 !important;
+      font-weight: 400 !important;
+      text-align: left !important;
+    }
+    #nv-dr-intro .nv-dr-content {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) 380px !important;
+      align-items: center !important;
+      gap: 56px !important;
+      max-width: 1010px !important;
+      margin: 0 auto !important;
+    }
+    #nv-dr-intro .nv-dr-copy {
+      max-width: 520px !important;
+    }
+    #nv-dr-intro .nv-dr-story p {
+      margin: 0 0 24px !important;
+      color: #06182b !important;
+      font-size: 22px !important;
+      line-height: 1.45 !important;
+      font-weight: 400 !important;
+    }
+    #nv-dr-intro .nv-dr-story p:last-child {
+      margin-bottom: 0 !important;
+    }
+    #nv-dr-intro .nv-dr-hero-visual {
+      width: 380px !important;
+      margin: 0 !important;
+    }
+    #nv-dr-intro .nv-dr-result-img {
+      border-radius: 18px !important;
+      box-shadow: none !important;
+    }
+  }
+  @media (max-width: 768px) {
+    #nv-dr-intro {
+      background: #fff !important;
+      color: #17222e !important;
+      padding: 24px 14px 34px !important;
+      border-bottom: 1px solid #e4ded8 !important;
+    }
+    #nv-dr-intro .nv-dr-wrap {
+      width: 100% !important;
+      max-width: 520px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    #nv-dr-intro .nv-dr-section {
+      margin: 0 auto 40px !important;
+    }
+    #nv-dr-intro .nv-dr-section:last-child {
+      margin-bottom: 0 !important;
+    }
+    #nv-dr-intro .nv-dr-title {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto 16px !important;
+      color: #073b63 !important;
+      font-size: 23px !important;
+      line-height: 1.16 !important;
+      font-weight: 800 !important;
+      text-align: center !important;
+    }
+    #nv-dr-intro .nv-dr-title span {
+      color: #052f55 !important;
+    }
+    #nv-dr-intro .nv-dr-title-spaced {
+      margin-top: 0 !important;
+    }
+    #nv-dr-intro .nv-dr-subtitle {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto 14px !important;
+      color: #17222e !important;
+      font-size: 17px !important;
+      line-height: 1.5 !important;
+      font-weight: 600 !important;
+      text-align: left !important;
+    }
+    #nv-dr-intro .nv-dr-content {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+    }
+    #nv-dr-intro .nv-dr-copy {
+      order: 1 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    #nv-dr-intro .nv-dr-story {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+    }
+    #nv-dr-intro .nv-dr-story p {
+      margin: 0 0 14px !important;
+      color: #28343a !important;
+      font-size: 16.25px !important;
+      line-height: 1.54 !important;
+      font-weight: 500 !important;
+    }
+    #nv-dr-intro .nv-dr-story p:last-child {
+      margin-bottom: 0 !important;
+    }
+    #nv-dr-intro .nv-dr-hero-visual {
+      order: 2 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 18px auto 0 !important;
+      padding: 0 !important;
+      border: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+    #nv-dr-intro .nv-dr-result-img {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      border-radius: 6px !important;
+      filter: grayscale(1) contrast(.98) saturate(.15) !important;
+    }
+  }
+  @media (max-width: 390px) {
+    #nv-dr-intro {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+    #nv-dr-intro .nv-dr-wrap,
+    #nv-dr-intro .nv-dr-title,
+    #nv-dr-intro .nv-dr-subtitle,
+    #nv-dr-intro .nv-dr-content,
+    #nv-dr-intro .nv-dr-copy,
+    #nv-dr-intro .nv-dr-story,
+    #nv-dr-intro .nv-dr-hero-visual {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #nv-dr-intro .nv-dr-title {
+      font-size: 23px;
+    }
+    #nv-dr-intro .nv-dr-story p {
+      font-size: 16px;
+    }
+  }
+  #nv-dr-intro {
+    padding: 40px 20px 18px !important;
+    background: #fff !important;
+    border-bottom: 1px solid #ece6df !important;
+  }
+  #nv-dr-intro .nv-dr-wrap {
+    max-width: 1100px !important;
+  }
+  #nv-dr-intro .nv-dr-headline {
+    max-width: 820px !important;
+    margin: 0 auto 24px !important;
+    color: var(--nv-section-heading-color, #17222e) !important;
+    font-family: var(--nv-section-heading-font, Poppins, Arial, sans-serif) !important;
+    font-size: var(--nv-section-heading-size-desktop, 30px) !important;
+    line-height: var(--nv-section-heading-line-height, 1.18) !important;
+    font-weight: var(--nv-section-heading-weight, 800) !important;
+    letter-spacing: 0 !important;
+    text-align: center !important;
+  }
+  #nv-dr-intro .nv-dr-headline span {
+    display: block !important;
+    color: #073b63 !important;
+  }
+  #nv-dr-intro .nv-dr-support {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 17px 42px 19px !important;
+    background: #faf4ee !important;
+    color: #2f3438 !important;
+    font-size: 18px !important;
+    line-height: 1.42 !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+  }
+  #nv-dr-intro .nv-dr-proof-row {
+    display: block !important;
+    width: 100% !important;
+    max-width: 1100px !important;
+    margin: 0 auto 36px !important;
+    padding: 0 !important;
+    background: #fff !important;
+    border: 2px solid #fff !important;
+    border-radius: 28px !important;
+    overflow: hidden !important;
+    box-shadow: 0 14px 24px rgba(6, 24, 43, .14) !important;
+  }
+  #nv-dr-intro .nv-dr-proof-img,
+  #nv-dr-intro .nv-dr-inline-img,
+  #nv-dr-intro .nv-dr-wide-img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    border: 0 !important;
+    border-radius: 18px !important;
+    box-shadow: none !important;
+    filter: grayscale(1) contrast(.98) saturate(.16) !important;
+  }
+  #nv-dr-intro .nv-dr-proof-img {
+    aspect-ratio: 3 / 2 !important;
+    object-fit: cover !important;
+    border-radius: 22px 22px 0 0 !important;
+    filter: none !important;
+  }
+  #nv-dr-intro .nv-dr-body > .nv-dr-text-img:nth-of-type(1) .nv-dr-inline-img,
+  #nv-dr-intro .nv-dr-body > .nv-dr-text-img:nth-of-type(2) .nv-dr-inline-img {
+    filter: none !important;
+  }
+  #nv-dr-intro .nv-dr-text-img .nv-dr-inline-img {
+    filter: none !important;
+  }
+  #nv-dr-intro .nv-dr-body {
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+  }
+  #nv-dr-intro .nv-dr-body p {
+    margin: 0 0 18px !important;
+    color: #2f3438 !important;
+    font-size: 18px !important;
+    line-height: 1.45 !important;
+    font-weight: 500 !important;
+    letter-spacing: 0 !important;
+  }
+  #nv-dr-intro .nv-dr-strong {
+    font-weight: 800 !important;
+  }
+  #nv-dr-intro .nv-dr-text-img {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 360px !important;
+    align-items: center !important;
+    gap: 38px !important;
+    margin: 0 0 24px !important;
+  }
+  #nv-dr-intro .nv-dr-text-img .nv-dr-copy {
+    width: 100% !important;
+    max-width: none !important;
+  }
+  #nv-dr-intro .nv-dr-text-img--reverse {
+    grid-template-columns: 340px minmax(0, 1fr) !important;
+  }
+  #nv-dr-intro .nv-dr-text-img--reverse .nv-dr-inline-figure {
+    order: -1 !important;
+  }
+  #nv-dr-intro .nv-dr-inline-figure,
+  #nv-dr-intro .nv-dr-wide-figure {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+  }
+  #nv-dr-intro .nv-dr-text-img .nv-dr-inline-figure {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    justify-self: stretch !important;
+    align-self: center !important;
+    overflow: hidden !important;
+    border-radius: 18px !important;
+    transform: none !important;
+  }
+  #nv-dr-intro .nv-dr-text-img .nv-dr-inline-img {
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+  #nv-dr-intro .nv-dr-body > p,
+  #nv-dr-intro .nv-dr-text-img .nv-dr-copy p {
+    margin-bottom: 18px !important;
+  }
+  #nv-dr-intro .nv-dr-text-img .nv-dr-copy p:last-child {
+    margin-bottom: 0 !important;
+  }
+  #nv-dr-intro .nv-dr-body > .nv-dr-text-img:last-child {
+    margin-bottom: 0 !important;
+  }
+  #nv-dr-intro .nv-dr-footer-band {
+    width: 100vw !important;
+    margin: 0 calc(50% - 50vw) 28px !important;
+    padding: 30px max(20px, calc((100vw - 1100px) / 2)) 32px !important;
+    background: #faf4ee !important;
+    box-sizing: border-box !important;
+  }
+  #nv-dr-intro .nv-dr-footer-band-inner {
+    width: 100% !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+  }
+  #nv-dr-intro .nv-dr-footer-band .nv-dr-emphasis {
+    margin-top: 0 !important;
+  }
+  #nv-dr-intro .nv-dr-footer-band .nv-dr-text-img {
+    margin-bottom: 0 !important;
+  }
+  @media (min-width: 769px) {
+    #nv-dr-intro .nv-dr-body > .nv-dr-text-img {
+      margin: 0 0 32px !important;
+      padding: 30px 0 !important;
+    }
+    #nv-dr-intro .nv-dr-footer-band {
+      margin-bottom: 32px !important;
+      padding-top: 38px !important;
+      padding-bottom: 38px !important;
+    }
+    #nv-dr-intro .nv-dr-footer-band .nv-dr-emphasis,
+    #nv-dr-intro .nv-dr-body > .nv-dr-emphasis {
+      margin: 0 auto 24px !important;
+    }
+    #nv-dr-intro .nv-dr-footer-band .nv-dr-text-img {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    #nv-dr-intro .nv-dr-body > .nv-dr-emphasis + .nv-dr-text-img {
+      margin: 0 !important;
+      padding: 0 0 38px !important;
+    }
+    #nv-dr-intro .nv-dr-text-img .nv-dr-product-figure {
+      max-width: 280px !important;
+      overflow: visible !important;
+    }
+    #nv-dr-intro .nv-dr-text-img .nv-dr-product-img {
+      object-fit: contain !important;
+      transform: scale(1.14) !important;
+      transform-origin: center center !important;
+    }
+  }
+  #nv-dr-intro .nv-dr-emphasis {
+    max-width: 820px !important;
+    margin: 6px auto 18px !important;
+    color: var(--nv-section-heading-color, #17222e) !important;
+    font-family: var(--nv-section-heading-font, Poppins, Arial, sans-serif) !important;
+    font-size: var(--nv-section-heading-size-desktop, 30px) !important;
+    line-height: var(--nv-section-heading-line-height, 1.18) !important;
+    font-weight: var(--nv-section-heading-weight, 800) !important;
+    text-align: center !important;
+    letter-spacing: 0 !important;
+  }
+  #nv-dr-intro .nv-dr-emphasis span {
+    display: block !important;
+    color: #073b63 !important;
+  }
+  #nv-dr-intro .nv-dr-wide-figure {
+    max-width: 620px !important;
+    margin: 14px auto 32px !important;
+  }
+  #nv-dr-intro .nv-dr-final {
+    max-width: 900px !important;
+    margin: 40px auto 0 !important;
+    color: #073b63 !important;
+    font-size: 34px !important;
+    line-height: 1.2 !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    letter-spacing: 0 !important;
+  }
+  @media (min-width: 769px) and (max-width: 1100px) {
+    #nv-dr-intro {
+      background: #fff !important;
+    }
+    #nv-dr-intro .nv-dr-headline {
+      font-size: var(--nv-section-heading-size-tablet, 28px) !important;
+    }
+    #nv-dr-intro .nv-dr-emphasis {
+      font-size: var(--nv-section-heading-size-tablet, 28px) !important;
+    }
+    #nv-dr-intro .nv-dr-text-img {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+      gap: 28px !important;
+    }
+    #nv-dr-intro .nv-dr-text-img--reverse {
+      grid-template-columns: 320px minmax(0, 1fr) !important;
+    }
+  }
+  @media (max-width: 768px) {
+    #nv-dr-intro {
+      background: #fff !important;
+      padding: 30px 0 18px !important;
+      border-bottom: 1px solid #e4ded8 !important;
+    }
+    #nv-dr-intro .nv-dr-wrap {
+      width: calc(100% - 48px) !important;
+      max-width: 648px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      box-sizing: border-box !important;
+    }
+    #nv-dr-intro .nv-dr-body,
+    #nv-dr-intro .nv-dr-proof-row {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    #nv-dr-intro .nv-dr-headline {
+      margin-bottom: 14px !important;
+      color: var(--nv-section-heading-color, #17222e) !important;
+      font-size: var(--nv-section-heading-size-mobile, 24px) !important;
+      line-height: 1.2 !important;
+    }
+    #nv-dr-intro .nv-dr-support {
+      margin: 0 !important;
+      padding: 13px 14px 15px !important;
+      font-size: 17px !important;
+      line-height: 1.42 !important;
+      font-weight: 500 !important;
+      text-align: center !important;
+    }
+    #nv-dr-intro .nv-dr-proof-row {
+      margin: 22px auto 30px !important;
+      padding: 0 !important;
+      border-radius: 16px !important;
+      box-shadow: 0 10px 18px rgba(6, 24, 43, .12) !important;
+    }
+    #nv-dr-intro .nv-dr-body p {
+      margin-bottom: 15px !important;
+      color: #28343a !important;
+      font-size: 16.25px !important;
+      line-height: 1.54 !important;
+      font-weight: 500 !important;
+    }
+    #nv-dr-intro .nv-dr-body > p,
+    #nv-dr-intro .nv-dr-text-img .nv-dr-copy p {
+      margin-bottom: 15px !important;
+    }
+    #nv-dr-intro .nv-dr-text-img,
+    #nv-dr-intro .nv-dr-text-img--reverse {
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+      gap: 16px !important;
+      margin: 22px 0 24px !important;
+      box-sizing: border-box !important;
+    }
+    #nv-dr-intro .nv-dr-footer-band {
+      margin: 0 calc(50% - 50vw) 24px !important;
+      padding: 24px 0 26px !important;
+    }
+    #nv-dr-intro .nv-dr-footer-band-inner {
+      width: calc(100% - 48px) !important;
+      max-width: 648px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    #nv-dr-intro .nv-dr-footer-band .nv-dr-text-img {
+      margin-bottom: 0 !important;
+    }
+    #nv-dr-intro .nv-dr-text-img--reverse .nv-dr-inline-figure {
+      order: 0 !important;
+    }
+    #nv-dr-intro .nv-dr-text-img .nv-dr-inline-figure {
+      width: 100% !important;
+      max-width: 100% !important;
+      transform: none !important;
+    }
+    #nv-dr-intro .nv-dr-emphasis {
+      margin: 26px auto 16px !important;
+      font-size: var(--nv-section-heading-size-mobile, 24px) !important;
+      line-height: 1.2 !important;
+    }
+    #nv-dr-intro .nv-dr-wide-figure {
+      margin: 12px auto 22px !important;
+    }
+    #nv-dr-intro .nv-dr-final {
+      margin-top: 26px !important;
+      font-size: 22px !important;
+      line-height: 1.24 !important;
+    }
+    #nv-dr-intro .nv-dr-proof-img,
+    #nv-dr-intro .nv-dr-inline-img,
+    #nv-dr-intro .nv-dr-wide-img {
+      border-radius: 8px !important;
+    }
+  }
+</style></head><body class=" dom-pending"><div id="nv-page-top"></div><div id="nv-spring-banner" style="margin: 0px; padding: 0px; line-height: 0;"><a href="#nv-best-offer" style="display:block;" id="cc-id-FJq2HurPKM6d" data-id="fkt-link-6c2-c91-b99" title="" target="_self" action="choose" align="center" animate="" speed="" delay="" loop="none" variantvalue="" data-secondsdelay="" data-minutesdelay="" replaceproductid="" billnow="false" offer="" upsell="" quantity="" price=""><img src="summer-sale-desktop.jpg" alt="Summer Sale &mdash; Up to 67% Off" class="fk-disable-lazy nv-banner-desktop" style="width:100%;height:auto;display:block;cursor:pointer;" id="cc-id-nipYEy9bEBt4" title="" href="" onclick="" target="_self" align="center" width="" height=""><img src="summer-sale-mobile.jpg" alt="Summer Sale &mdash; Up to 67% Off" class="fk-disable-lazy nv-banner-mobile" style="width:100%;height:auto;display:none;cursor:pointer;" id="cc-id-eY0hH0ra8tv8" title="" href="" onclick="" target="_self" align="center" width="" height=""></a></div><div id="nv-sticky-header"><div id="nv-sticky-inner"><img class="fk-disable-lazy nv-hdr-logo" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1769431998534_Product_name.webp" alt="Nurovita" id="cc-id-SoJrBSZytZyg" title="" href="" onclick="" target="_self" align="center" width="" height=""><a class="nv-hdr-cta" href="#nv-page-top" id="cc-id-q9AuIweQvpqt" data-id="fkt-link-b00-496-ae3" title="CLAIM MY DISCOUNT" target="_self" action="choose" align="center" animate="" speed="" delay="" loop="none" variantvalue="" data-secondsdelay="" data-minutesdelay="" replaceproductid="" billnow="false" offer="" upsell="" quantity="" price=""><span class="rte-styled-text" id="cc-id-onOz8jlom1jY">CLAIM MY DISCOUNT&nbsp;<i class="fas fa-arrow-right" id="cc-id-9XTWbgwoKCq4"></i></span></a></div></div><section id="nv-dr-intro" aria-label="Swollen legs discovery intro">
+  <div class="nv-dr-wrap">
+    <h2 class="nv-dr-headline">How Women Over 40 Are Repairing Skin Damage, Smoothing Wrinkles, And Restoring Deep Hydration…</h2>
+    <div class="nv-dr-proof-row" aria-label="Real lighter leg results">
+      <img class="fk-disable-lazy nv-dr-proof-img" src="firstlady.png" alt="Woman feeling lighter leg support">
+      <p class="nv-dr-support">Designed for women whose ankles, calves, and feet feel tighter as the day goes on, this daily ritual helps support calmer, lighter-feeling legs without harsh chemicals.</p>
+    </div>
+    <div class="nv-dr-body">
+      <div class="nv-dr-text-img">
+        <div class="nv-dr-copy">
+          <p>While others end the day with tight shoes, sock marks, puffy ankles, and legs that feel heavier with every step?</p>
+          <p>It is like the pressure slowly builds from morning to night. Your legs may look normal early in the day, then feel swollen, stretched, and uncomfortable by dinner.</p>
+          <p class="nv-dr-strong">No matter how much you rest.</p>
+          <p>How come some women can be on their feet all day and still feel steady by evening...</p>
+        </div>
+        <figure class="nv-dr-inline-figure" aria-label="Lighter calf before and after">
+          <img class="fk-disable-lazy nv-dr-inline-img" src="photo3.png" alt="Before and after lighter calf result">
+        </figure>
+      </div>
+      <div class="nv-dr-footer-band">
+        <div class="nv-dr-footer-band-inner">
+          <h3 class="nv-dr-emphasis">It May Come Down To One Weak Point.</h3>
+          <div class="nv-dr-text-img nv-dr-text-img--reverse">
+            <div class="nv-dr-copy">
+              <p>When those vessel walls weaken, fluid can start pooling around the ankles, calves, and feet. That is when your legs can feel tight, heavy, and harder to move by the end of the day.</p>
+              <p>You can elevate your feet, squeeze into tighter socks, or rub on another surface cream...</p>
+              <p>But if the vessel walls are not supported where the problem starts, the same pressure can keep coming back again and again.</p>
+            </div>
+            <figure class="nv-dr-inline-figure" aria-label="Lighter calf before and after">
+              <img class="fk-disable-lazy nv-dr-inline-img" src="photo3.png" alt="Before and after lighter calf result">
+            </figure>
+          </div>
+        </div>
+      </div>
+      <h3 class="nv-dr-emphasis">It May Come Down To One Weak Point.</h3>
+      <div class="nv-dr-text-img">
+        <div class="nv-dr-copy">
+          <p>When those vessel walls weaken, fluid can start pooling around the ankles, calves, and feet. That is when your legs can feel tight, heavy, and harder to move by the end of the day.</p>
+          <p>You can elevate your feet, squeeze into tighter socks, or rub on another surface cream...</p>
+          <p>But if the vessel walls are not supported where the problem starts, the same pressure can keep coming back again and again.</p>
+        </div>
+        <figure class="nv-dr-inline-figure" aria-label="Lighter calf before and after">
+          <img class="fk-disable-lazy nv-dr-inline-img" src="photo3.png" alt="Before and after lighter calf result">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section><div id="nv-hero"><div class="nv-hero-grid" id="cc-id-pe71Sw27BPvp"><!-- LEFT: Product Image --><div class="nv-hero-img" id="cc-id-jeRx1TpOBarP"><img class="fk-disable-lazy nv-hero-main-img" src="main1.png" alt="Natural Cooling Roller" id="cc-id-27wPdSlq6v3J" title="" href="" onclick="" target="_self" align="center" width="" height=""><div class="nv-hero-gallery" aria-label="Product image gallery"><button class="nv-hero-gallery-btn is-active" type="button" data-gallery-src="main1.png" aria-label="Show product image 1"><img class="fk-disable-lazy" src="main1.png" alt=""></button><button class="nv-hero-gallery-btn" type="button" data-gallery-src="main2.png" aria-label="Show product image 2"><img class="fk-disable-lazy" src="main2.png" alt=""></button><button class="nv-hero-gallery-btn" type="button" data-gallery-src="main3.png" aria-label="Show product image 3"><img class="fk-disable-lazy" src="main3.png" alt=""></button><button class="nv-hero-gallery-btn" type="button" data-gallery-src="main4.png" aria-label="Show product image 4"><img class="fk-disable-lazy" src="main4.png" alt=""></button><button class="nv-hero-gallery-btn" type="button" data-gallery-src="main5.png" aria-label="Show product image 5"><img class="fk-disable-lazy" src="main5.png" alt=""></button><button class="nv-hero-gallery-btn" type="button" data-gallery-src="main6.png" aria-label="Show product image 6"><img class="fk-disable-lazy" src="main6.png" alt=""></button></div><img src="com.webp" alt="Customer review" class="fk-disable-lazy nv-hero-fb-comment"></div><!-- RIGHT: Content --><div class="nv-hero-content" id="cc-id-WAibwADXKQ5L"><div class="nv-sale-proof"><span class="nv-trust-stars" aria-label="5 stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span>Rated 4.8 / 5.0 | Excellent</span></div><h1 class="nv-sale-title">Natural Cooling Roller</h1><p class="nv-sale-subtitle">Feeds your starving collagen to smooth crepey texture, tighten loose skin, and restore bounce at the source.</p><div class="nv-amla-benefits" aria-label="Nurovita key benefits"><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Collagen</b> – Dormant cells producing collagen again</span></div><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Penetration</b> – Actives reach deeper than cream can</span></div><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Elasticity</b> – Supports firmer thighs, arms, and belly</span></div><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Barrier</b> – Protects fresh collagen from breaking down</span></div></div><div class="nv-pack-grid nv-pack-grid-reference" aria-label="Choose your Nurovita pack"><a class="nv-pack-card nv-pack-side" href="#nv-best-offer" data-pack="1" aria-pressed="false"><span class="nv-pack-title">Buy One</span><img class="nv-pack-img fk-disable-lazy" src="1x.png" alt="1 Nurovita Cooling Roller"><span class="nv-pack-save">Save $10.00</span><span class="nv-pack-price">$29.99</span><span class="nv-pack-compare">$39.99</span></a><a class="nv-pack-card nv-pack-featured is-selected" href="#nv-best-offer" data-pack="3" aria-pressed="true"><span class="nv-pack-badge">Most Popular</span><span class="nv-pack-title">Buy 2 Get<br>1 <strong>FREE</strong></span><img class="nv-pack-img fk-disable-lazy" src="3x.png" alt="3 Nurovita Cooling Rollers"><span class="nv-pack-save">Save $20.00</span><span class="nv-pack-price">$59.99</span><span class="nv-pack-compare">$79.99</span></a><a class="nv-pack-card nv-pack-side" href="#nv-best-offer" data-pack="4" aria-pressed="false"><span class="nv-pack-badge nv-pack-soft-badge">Biggest Savings</span><span class="nv-pack-title">Buy 3 Get<br>2 <strong>FREE</strong></span><img class="nv-pack-img fk-disable-lazy" src="5x.png" alt="5 Nurovita Cooling Rollers"><span class="nv-pack-save">Save $30.00</span><span class="nv-pack-price">$89.99</span><span class="nv-pack-compare">$119.99</span></a></div><div class="nv-hero-gifts" aria-label="Free gifts included today"><p class="nv-gift-lead">Today only: 4 FREE gifts with your first order.</p><div class="nv-gift-grid"><div class="nv-gift-item"><div class="nv-gift-card"><span class="nv-gift-ribbon">FREE</span><img class="fk-disable-lazy nv-gift-img" src="free.png" alt="Free shipping gift"></div><div class="nv-gift-name">FREE Shipping</div></div><div class="nv-gift-item"><div class="nv-gift-card"><span class="nv-gift-ribbon">FREE</span><img class="fk-disable-lazy nv-gift-img" src="habbit.png" alt="Habit tracker gift"></div><div class="nv-gift-name">Habit Tracker</div></div><div class="nv-gift-item"><div class="nv-gift-card"><span class="nv-gift-ribbon">FREE</span><img class="fk-disable-lazy nv-gift-img" src="moneyback.png" alt="Extended guarantee gift"></div><div class="nv-gift-name">Extended Guarantee</div></div><div class="nv-gift-item nv-gift-ebook"><div class="nv-gift-card"><span class="nv-gift-ribbon">FREE</span><span class="nv-gift-lock" aria-hidden="true"></span></div><div class="nv-gift-name"></div></div></div></div><a class="nv-hero-cta nv-offer-cta" href="#">Get 67% Off Today <span class="nv-hero-cta-arrow">&#8594;</span></a><div class="nv-stock-line"><span class="nv-stock-dot" aria-hidden="true"></span><span>In Stock, ready to ship - arrives by June 20th</span></div><p class="nv-subscribe-note">By default, your selected package will continue to be shipped and billed automatically (every 1 or 2 months) unless you choose to skip, pause, cancel, or select the one-time purchase option below.</p><div class="nv-checkout-strip"><span class="nv-checkout-label"><img class="nv-checkout-icon fk-disable-lazy" src="https://alevia.com/cdn/shop/files/shipment-icon.svg?v=1769882221" alt="" aria-hidden="true">Fast Delivery</span><span class="nv-checkout-label"><img class="nv-checkout-icon fk-disable-lazy" src="https://alevia.com/cdn/shop/files/checkout-icon.svg?v=1769882221" alt="" aria-hidden="true">Secure Checkout</span><img class="nv-payment-badges fk-disable-lazy" src="https://alevia.com/cdn/shop/files/Alevia-Payment-Badges_8d92cedb-2466-4afd-a730-3f1cd34ea9a1.webp?v=1764053470" alt="Accepted payment methods"></div><ul class="nv-afterpay-list" aria-label="Auto refill benefits"><li>Refilled every month</li><li>Skip, Pause, or Cancel Anytime</li></ul></div></div></div><div data-text="text" data-secondsdelay="" id="cc-id-mAUWVRDCdeMi"></div><div class="fk-row" id="cc-id-cEIQNJ2wSdor" style="display: none;"></div><div class="fk-row" id="cc-id-nV2O6v668UyQ" data-cc-tablet="false" data-cc-mobilelarge="false" data-cc-mobile="false" style="display: none;"></div><div data-secondsdelay="" id="ir69t" class="fk-row"><div align="center" data-secondsdelay="" id="i4b3x" class="fk-col col"><grammarly-extension data-grammarly-shadow-root="true" class="dnXmp" style="position: absolute; top: 0px; left: 0px; --rem: 16;" id="cc-id-E7aTwqwllfIh"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" class="dnXmp" style="position: absolute; top: 0px; left: 0px; --rem: 16;" id="cc-id-ywdCJg4ZgxR8"></grammarly-extension><img class="fk-image-defaults fk-disable-lazy" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1770978453721_withoutclockphone.webp" id="cc-id-VmlKxIgUIi34" title="" href="" onclick="" target="_self" alt="" align="center" width="" height="" style="display: none;" data-cc-desktop="false"><img class="fk-image-defaults fk-disable-lazy" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1770978478262_withoutclockdesktop.webp" id="cc-id-KBUfBXcjY9ut" title="" href="" onclick="" target="_self" align="center" width="" height="" data-cc-tabletlarge="false" data-cc-tablet="false" data-cc-mobilelarge="false" data-cc-mobile="false" style="display: none;"><div data-box="true" data-secondsdelay="" id="i0n4k" style="display: none;"><div data-text="text" data-secondsdelay="" id="i49fr"><span class="font-FFFFFFFF cc-rte-styled rte-styled-text" id="cc-id-pc8HHBpQNpOQ">THE "LIGHTER LEGS OR MONEY BACK" 90-DAY GUARANTEE </span><br class="rte-styled-text" id="cc-id-I5vnZJKGG3yE"></div></div><div data-box="true" data-secondsdelay="" id="i3m14h" style="display: none;"><img id="fkt-image-bbb-aa3-ac3" title="" target="_self" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1765865791586_Product_name.webp" href="" align="center" alt="" width="" height="" onclick="" class="fk-image-defaults fk-disable-lazy disable-fk-lazy" style=""><div data-box="true" data-secondsdelay="" id="ieb4r7b" class="contained"><div data-box="true" data-secondsdelay="" id="i2udwks"><div data-text="text" data-secondsdelay="" id="iutn2x" style="font-size: 40px !important;" spellcheck="false"><div class="rte-styled-text" id="cc-id-jcRmiTefYKXK">
                   Finally Get Your Swollen Legs Back to Normal In Just 30
                   Seconds a Day&mdash;&nbsp;<br id="cc-id-IuEqff1tEHSG"></div></div><div data-text="text" data-secondsdelay="" id="cc-id-JTdwh441DbR6" style="font-size: 16px !important;" spellcheck="false"><b data-text="text" data-secondsdelay="" id="cc-id-FYbblyV7ReSC" class="rte-styled-text" data-layer-name="Text"></b>Join over 10,000 women with swollen legs who discovered the
                 30-Second European Ritual that works directly where the problem
@@ -13765,43 +14654,41 @@ body.dom-pending * {
                           Secure Checkout<br class="rte-styled-text" id="cc-id-TMjdJ09VMZMe"></div></div><div data-text="text" data-secondsdelay="" id="infbofd"></div></div></div><span data-text="text" data-secondsdelay="" id="cc-id-1DkK2HIM6VVf" style="text-align: center !important;"><p data-start="266" data-end="366" id="cc-id-OHErVkiKJxBV" class="rte-styled-text"></p><p data-start="539" data-end="650" id="cc-id-cALjT4kjhpP1">
                       Your information is protected by 256-bit encryption and
                       verified safe payment security.
-</p><p id="cc-id-nQIyB8GHoQv7"></p><p data-start="368" data-end="465" id="cc-id-3kWBy0SXJ6RS" class="rte-styled-text"></p></span></div></div></div></div></div><div id="nv-trust-bar"><div id="nv-trust-inner"><div class="nv-trust-item" id="cc-id-MkTdUlM8Ah3G"><div class="nv-trust-icon" id="cc-id-888gUeD8aP7I"><img class="fk-disable-lazy" src="https://assets.imagehub.io/8c9e1110-8218-11ef-a556-ffaacc6dbefa/1775245370549_quality_tested.webp" alt="Quality Tested" id="cc-id-FXmfNnK52e7T" title="" href="" onclick="" target="_self" align="center" width="" height=""></div><div class="nv-trust-text" id="cc-id-HVER3d86PfsK"><div class="nv-trust-headline" id="cc-id-gCVazE6tsnoN" data-layer-name="Text">Safe With Your Medications</div><div class="nv-trust-desc" id="cc-id-Go52a17tP5jg" data-layer-name="Text"><span id="cc-id-Ok6pOIIf1qEZ" class="rte-styled-text">Esculin-free &mdash; no harsh chemicals, no drug ingredients</span><br class="rte-styled-text" id="cc-id-G5vJBigYlM02"></div></div></div><div class="nv-trust-item" id="cc-id-9D5FdtidDHGx"><div class="nv-trust-icon" id="cc-id-ucIiplVzhbwo"><img class="fk-disable-lazy" src="https://assets.imagehub.io/8c9e1110-8218-11ef-a556-ffaacc6dbefa/1775245398206_free_us_shipping.webp" alt="Free US Shipping" id="cc-id-qhsCOXK6rGqW" title="" href="" onclick="" target="_self" align="center" width="" height=""></div><div class="nv-trust-text" id="cc-id-nzqly2eVfUL4"><div class="nv-trust-headline" id="cc-id-fFtAzPETTARg">
+</p><p id="cc-id-nQIyB8GHoQv7"></p><p data-start="368" data-end="465" id="cc-id-3kWBy0SXJ6RS" class="rte-styled-text"></p></span></div></div></div></div></div><div id="nv-trust-bar"><div id="nv-trust-inner"><div class="nv-trust-item" id="cc-id-MkTdUlM8Ah3G"><div class="nv-trust-icon" id="cc-id-888gUeD8aP7I"><img class="fk-disable-lazy" src="https://assets.imagehub.io/8c9e1110-8218-11ef-a556-ffaacc6dbefa/1775245370549_quality_tested.webp" alt="Quality Tested" id="cc-id-FXmfNnK52e7T" title="" href="" onclick="" target="_self" align="center" width="" height=""></div><div class="nv-trust-text" id="cc-id-HVER3d86PfsK"><div class="nv-trust-headline" id="cc-id-gCVazE6tsnoN" data-layer-name="Text">Safe On Fragile, Thinning Skin</div><div class="nv-trust-desc" id="cc-id-Go52a17tP5jg" data-layer-name="Text"><span id="cc-id-Ok6pOIIf1qEZ" class="rte-styled-text">No retinol, no harsh acids &mdash; gentle enough for skin over 55</span><br class="rte-styled-text" id="cc-id-G5vJBigYlM02"></div></div></div><div class="nv-trust-item" id="cc-id-9D5FdtidDHGx"><div class="nv-trust-icon" id="cc-id-ucIiplVzhbwo"><img class="fk-disable-lazy" src="https://assets.imagehub.io/8c9e1110-8218-11ef-a556-ffaacc6dbefa/1775245398206_free_us_shipping.webp" alt="Free US Shipping" id="cc-id-qhsCOXK6rGqW" title="" href="" onclick="" target="_self" align="center" width="" height=""></div><div class="nv-trust-text" id="cc-id-nzqly2eVfUL4"><div class="nv-trust-headline" id="cc-id-fFtAzPETTARg">
                   Free US Shipping
                 </div><div class="nv-trust-desc" id="cc-id-T2FzWAyMaJBK">
-                  Ships in 2-3 days. 12,000+ happy customers.
+                  Ships in 2–3 days. One-time purchase, 8,000+ happy customers.
                 </div></div></div><div class="nv-trust-item" id="cc-id-FBdl1OBnVsun"><div class="nv-trust-icon" id="cc-id-ZQgbHl7R1Im1"><img class="fk-disable-lazy" src="https://assets.imagehub.io/8c9e1110-8218-11ef-a556-ffaacc6dbefa/1775245414738_money_back_guarantee.webp" alt="100% Money Back Guarantee" id="cc-id-7Sf18BoDmcaC" title="" href="" onclick="" target="_self" align="center" width="" height=""></div><div class="nv-trust-text" id="cc-id-WZA2fT7PrHWi"><div class="nv-trust-headline" id="cc-id-kjyt1U2EMNOO">
                   90-Day Money-Back Guarantee
                 </div><div class="nv-trust-desc" id="cc-id-0YYmMO9OmCyj">
                   Full refund, no questions asked.
                 </div></div></div></div></div><div id="nv-conditions"><h2 id="nv-cond-heading" spellcheck="false">
             Watch Your Legs Transform In Weeks
-          </h2><div id="nv-cond-carousel"><div class="nv-cond-arrow nv-prev" id="nv-cond-prev" style="opacity: 0.3;"><i class="fa fa-angle-left" id="cc-id-7rIkODSx8rp6"></i></div><div id="nv-cond-track" style="transform: translateX(0px);"><div class="nv-cond-card" id="cc-id-sxzvxbAOPSU7"><img class="fk-disable-lazy nv-cond-img" src="photo1.png" alt="Swollen, Heavy Legs before and after" id="cc-id-wq0fEdbeqTRK" title="" href="" onclick="" target="_self" align="center" width="" height=""><div class="nv-cond-label" id="cc-id-41Z1cfXiujA3">
-                  Swollen, Heavy Legs
+          </h2><div id="nv-cond-carousel"><div class="nv-cond-arrow nv-prev" id="nv-cond-prev" style="opacity: 0.3;"><i class="fa fa-angle-left" id="cc-id-7rIkODSx8rp6"></i></div><div id="nv-cond-track" style="transform: translateX(0px);"><div class="nv-cond-card" id="cc-id-sxzvxbAOPSU7"><img class="fk-disable-lazy nv-cond-img" src="photo1.png" alt="Crepey Thighs before and after" id="cc-id-wq0fEdbeqTRK" title="" href="" onclick="" target="_self" align="center" width="" height=""><div class="nv-cond-label" id="cc-id-41Z1cfXiujA3">
+                  Crepey Thighs
                 </div><div class="nv-cond-name-row" id="cc-id-HPWMNVoZIHgU"><span class="nv-cond-name" id="cc-id-GlLVhKGWMpcg">Linda K.</span><span class="nv-cond-badge" id="cc-id-5j9q6NDLVnEm"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-SqTHDkONJAh3"><polyline points="20 6 9 17 4 12" id="cc-id-l0m9Xp2J4jIq"></polyline></svg>
-                    Verified</span></div><ul class="nv-cond-benefits" id="cc-id-Kf81d1TtnhdL"><li id="cc-id-Pt7ANaNmBGi2"><span class="nv-cond-check" id="cc-id-TAr649Q1xlON"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-a8Q9F7H12pOI"><polyline points="20 6 9 17 4 12" id="cc-id-iZa2LlvDpEG0"></polyline></svg></span><span id="cc-id-7C2XCS4DhKTm">Shoes fit all day &mdash; not just the morning</span></li><li id="cc-id-rcZFV1mPHjuC"><span class="nv-cond-check" id="cc-id-vsuSu1MIS2R4"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-shSyzJnPBW8q"><polyline points="20 6 9 17 4 12" id="cc-id-ai8leOcauqiK"></polyline></svg></span><span id="cc-id-VejudtR8Q263">That heavy, tight feeling finally lifted</span></li><li id="cc-id-aqq7wb4WLP3M"><span class="nv-cond-check" id="cc-id-0b6lXSWRF6Zc"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-2eYeginpUjws"><polyline points="20 6 9 17 4 12" id="cc-id-fsEmAVtvijkK"></polyline></svg></span><span id="cc-id-VYZVQnB4qoSg">Walking without needing to stop and rest</span></li></ul><div class="nv-cond-quote" id="cc-id-HWMj5weDaM05">"My legs swell from my heart condition and by evening I can barely get my shoes off. A few weeks rolling this on, the heaviness finally lifts. It's the first thing that's actually made a difference &mdash; I won't go a day without it."</div></div><div class="nv-cond-card" id="cc-id-KcF0JDIO4945"><img class="fk-disable-lazy nv-cond-img" src="photo2.png" alt="Swollen Ankles before and after" id="cc-id-5vjnKhiiCrAt" title="" href="" onclick="" target="_self" align="center" width="" height=""><div class="nv-cond-label" id="cc-id-nSwaolIChjoZ">
-                  Swollen Ankles
+                    Verified</span></div><ul class="nv-cond-benefits" id="cc-id-Kf81d1TtnhdL"><li id="cc-id-Pt7ANaNmBGi2"><span class="nv-cond-check" id="cc-id-TAr649Q1xlON"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-a8Q9F7H12pOI"><polyline points="20 6 9 17 4 12" id="cc-id-iZa2LlvDpEG0"></polyline></svg></span><span id="cc-id-7C2XCS4DhKTm">Thighs look smooth &mdash; not just standing up</span></li><li id="cc-id-rcZFV1mPHjuC"><span class="nv-cond-check" id="cc-id-vsuSu1MIS2R4"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-shSyzJnPBW8q"><polyline points="20 6 9 17 4 12" id="cc-id-ai8leOcauqiK"></polyline></svg></span><span id="cc-id-VejudtR8Q263">That crepey, crinkled texture finally gone</span></li><li id="cc-id-aqq7wb4WLP3M"><span class="nv-cond-check" id="cc-id-0b6lXSWRF6Zc"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-2eYeginpUjws"><polyline points="20 6 9 17 4 12" id="cc-id-fsEmAVtvijkK"></polyline></svg></span><span id="cc-id-VYZVQnB4qoSg">Sitting without tugging a towel over them</span></li></ul><div class="nv-cond-quote" id="cc-id-HWMj5weDaM05">"My thighs went crepey out of nowhere - hadn't worn shorts in three years. A few weeks rolling this on, that crinkled texture actually started smoothing out. Sat by the pool last weekend and didn't reach for a towel - nothing else even came close."</div></div><div class="nv-cond-card" id="cc-id-KcF0JDIO4945"><img class="fk-disable-lazy nv-cond-img" src="photo2.png" alt="Crepey Arms before and after" id="cc-id-5vjnKhiiCrAt" title="" href="" onclick="" target="_self" align="center" width="" height=""><div class="nv-cond-label" id="cc-id-nSwaolIChjoZ">
+                  Crepey Arms
                 </div><div class="nv-cond-name-row" id="cc-id-EuU0jTPN1H02"><span class="nv-cond-name" id="cc-id-CXC6ErOFdM4Y">Diane M.</span><span class="nv-cond-badge" id="cc-id-tIJ8dtYCh7Lb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-0BoEwBYbK4SW"><polyline points="20 6 9 17 4 12" id="cc-id-8aCwuSNFhVfz"></polyline></svg>
-                    Verified</span></div><ul class="nv-cond-benefits" id="cc-id-R8YjGHVGTcJC"><li id="cc-id-lJEJ1P3j2l4X"><span class="nv-cond-check" id="cc-id-24q8eUZIp7B8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-vuzEgozcvZku"><polyline points="20 6 9 17 4 12" id="cc-id-nBB9YPTgZWaa"></polyline></svg></span><span id="cc-id-I7kcdqQwNH8S">Ankle bones visible again by evening</span></li><li id="cc-id-eWKrVWTYak2u"><span class="nv-cond-check" id="cc-id-oIfK89fqYjDj"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-9pwBv5lHlyW5"><polyline points="20 6 9 17 4 12" id="cc-id-VQDeVEegHyjE"></polyline></svg></span><span id="cc-id-alW9GAIisvCR">Shoes fit all day &mdash; not just mornings</span></li><li id="cc-id-w9t8rUw07gWl"><span class="nv-cond-check" id="cc-id-Yj3LUKUGqrjW"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-o2jW2HYPizWy"><polyline points="20 6 9 17 4 12" id="cc-id-VFpWKiWqmiKi"></polyline></svg></span><span id="cc-id-cLymnIkN7JrF">No more sock marks pressed into skin</span></li></ul><div class="nv-cond-quote" id="cc-id-7K63z9tUQMOt" data-layer-name="Text">"By 3 PM my ankles would be so swollen I couldn't get my shoes back on. About a month using this once a day and I can actually see my ankle bones again &mdash; my shoes fit all day now. I almost cried the first time I noticed."</div></div><div class="nv-cond-card" id="cc-id-GYNeNyamiM2S"><img class="fk-disable-lazy nv-cond-img" src="photo3.png" alt="Hot, Painful Legs before and after" id="cc-id-VNnq525rA3zV" title="" href="" onclick="" target="_self" align="center" width="" height=""><div class="nv-cond-label" id="cc-id-RLR6s7S2oVkZ">
-                  Hot, Painful Legs
+                    Verified</span></div><ul class="nv-cond-benefits" id="cc-id-R8YjGHVGTcJC"><li id="cc-id-lJEJ1P3j2l4X"><span class="nv-cond-check" id="cc-id-24q8eUZIp7B8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-vuzEgozcvZku"><polyline points="20 6 9 17 4 12" id="cc-id-nBB9YPTgZWaa"></polyline></svg></span><span id="cc-id-I7kcdqQwNH8S">Upper arms smooth again in the mirror</span></li><li id="cc-id-eWKrVWTYak2u"><span class="nv-cond-check" id="cc-id-oIfK89fqYjDj"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-9pwBv5lHlyW5"><polyline points="20 6 9 17 4 12" id="cc-id-VQDeVEegHyjE"></polyline></svg></span><span id="cc-id-alW9GAIisvCR">Tank tops on again &mdash; not just at home</span></li><li id="cc-id-w9t8rUw07gWl"><span class="nv-cond-check" id="cc-id-Yj3LUKUGqrjW"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-o2jW2HYPizWy"><polyline points="20 6 9 17 4 12" id="cc-id-VFpWKiWqmiKi"></polyline></svg></span><span id="cc-id-cLymnIkN7JrF">No more tugging sleeves over my elbows</span></li></ul><div class="nv-cond-quote" id="cc-id-7K63z9tUQMOt" data-layer-name="Text">"My arms went crepey out of nowhere - hadn't gone sleeveless in years. About a month rolling this on every night and that crinkled texture actually started smoothing. Put on a sleeveless dress last weekend without even thinking - I almost cried in the mirror."</div></div><div class="nv-cond-card" id="cc-id-GYNeNyamiM2S"><img class="fk-disable-lazy nv-cond-img" src="photo3.png" alt="Fragile, Bruise-Prone Skin before and after" id="cc-id-VNnq525rA3zV" title="" href="" onclick="" target="_self" align="center" width="" height=""><div class="nv-cond-label" id="cc-id-RLR6s7S2oVkZ">
+                  Fragile, Bruise-Prone Skin
                 </div><div class="nv-cond-name-row" id="cc-id-ZE8qvmklQByP"><span class="nv-cond-name" id="cc-id-lTs1jwFSaJLB">Nancy M.</span><span class="nv-cond-badge" id="cc-id-H1ATLeDaNMhu"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-smhgBm595mW4"><polyline points="20 6 9 17 4 12" id="cc-id-a7MAKZgTsrK6"></polyline></svg>
-                    Verified</span></div><ul class="nv-cond-benefits" id="cc-id-WjTvEOdjGS4K"><li id="cc-id-hasppGSpPvfe"><span class="nv-cond-check" id="cc-id-mJ99i40KwimI"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-gmoFOvrxPL8g"><polyline points="20 6 9 17 4 12" id="cc-id-PM9sqvu3RjXm"></polyline></svg></span><span id="cc-id-wRGjN18wnnTV">That burning feeling finally quieted down</span></li><li id="cc-id-pKywlagl65sx"><span class="nv-cond-check" id="cc-id-dISJqwZvyOB5"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-fHHtoKINoL5G"><polyline points="20 6 9 17 4 12" id="cc-id-ZkMdTDMI2cxU"></polyline></svg></span><span id="cc-id-tEaPYr2dDbbW">Sleeping through the night again</span></li><li id="cc-id-4tjqzH8U3dkS"><span class="nv-cond-check" id="cc-id-hDn18eDv1ML7"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-yX6EO3eFwgY1"><polyline points="20 6 9 17 4 12" id="cc-id-zwZnKCeP9kFg"></polyline></svg></span><span id="cc-id-Q2ssNTA1vVaQ">Legs don't throb by evening anymore</span></li></ul><div class="nv-cond-quote" id="cc-id-K8js14m0gz4A" data-layer-name="Text">"The burning when I'd lay down at night was the worst &mdash; some nights I just couldn't sleep. About a week in, that hot throbbing ache finally calmed down. For the first time in years my legs don't hurt by dinner."</div></div><div class="nv-cond-card" id="cc-id-NXRRCpdv8xIo"><img class="fk-disable-lazy nv-cond-img" src="photo4.png" alt="Varicose Veins before and after" id="cc-id-Igh8oY1DJaLs" title="" href="" onclick="" target="_self" align="center" width="" height=""><div class="nv-cond-label" id="cc-id-YxLyEEZ7gA9a">
-                  Varicose Veins
+                    Verified</span></div><ul class="nv-cond-benefits" id="cc-id-WjTvEOdjGS4K"><li id="cc-id-hasppGSpPvfe"><span class="nv-cond-check" id="cc-id-mJ99i40KwimI"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-gmoFOvrxPL8g"><polyline points="20 6 9 17 4 12" id="cc-id-PM9sqvu3RjXm"></polyline></svg></span><span id="cc-id-wRGjN18wnnTV">That tissue-paper skin finally firming up</span></li><li id="cc-id-pKywlagl65sx"><span class="nv-cond-check" id="cc-id-dISJqwZvyOB5"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-fHHtoKINoL5G"><polyline points="20 6 9 17 4 12" id="cc-id-ZkMdTDMI2cxU"></polyline></svg></span><span id="cc-id-tEaPYr2dDbbW">Shorts on again without even thinking</span></li><li id="cc-id-4tjqzH8U3dkS"><span class="nv-cond-check" id="cc-id-hDn18eDv1ML7"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-yX6EO3eFwgY1"><polyline points="20 6 9 17 4 12" id="cc-id-zwZnKCeP9kFg"></polyline></svg></span><span id="cc-id-Q2ssNTA1vVaQ">Shins don't bruise from every bump now</span></li></ul><div class="nv-cond-quote" id="cc-id-K8js14m0gz4A" data-layer-name="Text">"I'd bump my shin and have a purple mark for weeks - my legs were covered in them. About a month in, the bruises started fading and new ones barely showed. First summer in years I'm not hiding my legs."</div></div><div class="nv-cond-card" id="cc-id-NXRRCpdv8xIo"><img class="fk-disable-lazy nv-cond-img" src="photo4.png" alt="Crepey Hands before and after" id="cc-id-Igh8oY1DJaLs" title="" href="" onclick="" target="_self" align="center" width="" height=""><div class="nv-cond-label" id="cc-id-YxLyEEZ7gA9a">
+                  Crepey Hands
                 </div><div class="nv-cond-name-row" id="cc-id-U4qSa6WoO3AM"><span class="nv-cond-name" id="cc-id-OipKRys6gfwn">Barbara S.</span><span class="nv-cond-badge" id="cc-id-I4uIlJwmgPqu"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-DiyD4WVNCCoC"><polyline points="20 6 9 17 4 12" id="cc-id-7ZBafCttl9ja"></polyline></svg>
-                    Verified</span></div><ul class="nv-cond-benefits" id="cc-id-V8ho2ZONhfg0"><li id="cc-id-GrOC5Kta63vK"><span class="nv-cond-check" id="cc-id-Bs0PQlF1UqP8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-12Pzvodn8dBU"><polyline points="20 6 9 17 4 12" id="cc-id-JnupU1qSrnHH"></polyline></svg></span><span id="cc-id-8M2JbKRPRCm3">Veins noticeably less visible after six weeks</span></li><li id="cc-id-jqmoYgbQSFpI"><span class="nv-cond-check" id="cc-id-3Yl5X9uEGznw"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-Ull0oDSkWEs7"><polyline points="20 6 9 17 4 12" id="cc-id-sXC2tcC1cBkO"></polyline></svg></span><span id="cc-id-T4FJ8Vl2CL5U">Confident enough to show her legs again</span></li><li id="cc-id-RfWaZQ1yBhP4"><span class="nv-cond-check" id="cc-id-X2blAvTOGv70"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-3AAoDrfgZUpa"><polyline points="20 6 9 17 4 12" id="cc-id-WoMfcchEy0AL"></polyline></svg></span><span id="cc-id-zq3JI737iwJk">Her daughter noticed before she said a word</span></li></ul><div class="nv-cond-quote" id="cc-id-C6lwvxmqslL3" data-layer-name="Text">"I stopped wearing dresses years ago because of my veins. Six weeks in and they've faded so much my daughter noticed before I even said anything. I wore a skirt to church last Sunday."</div></div><div class="nv-cond-card" id="cc-id-xWY7QDhlUAvG"><img class="fk-disable-lazy nv-cond-img" src="photo5.png" alt="One Leg Bigger Than the Other before and after" id="cc-id-BAiSLg70ofo3" title="" href="" onclick="" target="_self" align="center" width="" height=""><div class="nv-cond-label" id="cc-id-rLT5CWhGk7WR">
-                  One Leg Bigger Than the Other
+                    Verified</span></div><ul class="nv-cond-benefits" id="cc-id-V8ho2ZONhfg0"><li id="cc-id-GrOC5Kta63vK"><span class="nv-cond-check" id="cc-id-Bs0PQlF1UqP8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-12Pzvodn8dBU"><polyline points="20 6 9 17 4 12" id="cc-id-JnupU1qSrnHH"></polyline></svg></span><span id="cc-id-8M2JbKRPRCm3">Hands noticeably smoother after a few weeks</span></li><li id="cc-id-jqmoYgbQSFpI"><span class="nv-cond-check" id="cc-id-3Yl5X9uEGznw"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-Ull0oDSkWEs7"><polyline points="20 6 9 17 4 12" id="cc-id-sXC2tcC1cBkO"></polyline></svg></span><span id="cc-id-T4FJ8Vl2CL5U">Hands don't give away her age anymore</span></li><li id="cc-id-RfWaZQ1yBhP4"><span class="nv-cond-check" id="cc-id-X2blAvTOGv70"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-3AAoDrfgZUpa"><polyline points="20 6 9 17 4 12" id="cc-id-WoMfcchEy0AL"></polyline></svg></span><span id="cc-id-zq3JI737iwJk">Her husband noticed before she said a word</span></li></ul><div class="nv-cond-quote" id="cc-id-C6lwvxmqslL3" data-layer-name="Text">"I hid my hands - they looked years older than my face. A few weeks in and my husband noticed before I said a word. Reached across the dinner table without thinking."</div></div><div class="nv-cond-card" id="cc-id-xWY7QDhlUAvG"><img class="fk-disable-lazy nv-cond-img" src="photo5.png" alt="Crepey Butt before and after" id="cc-id-BAiSLg70ofo3" title="" href="" onclick="" target="_self" align="center" width="" height=""><div class="nv-cond-label" id="cc-id-rLT5CWhGk7WR">
+                  Crepey Butt
                 </div><div class="nv-cond-name-row" id="cc-id-hIv6lqxNfIGk"><span class="nv-cond-name" id="cc-id-u18nVq20QQ4Y">Gary H.</span><span class="nv-cond-badge" id="cc-id-WtI3VnLG9dXI"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-S1JJmMbb4nt1"><polyline points="20 6 9 17 4 12" id="cc-id-3v9qewX6UVKN"></polyline></svg>
-                    Verified</span></div><ul class="nv-cond-benefits" id="cc-id-6trR9ES2al5I"><li id="cc-id-Oh6aPmt1ZlI8"><span class="nv-cond-check" id="cc-id-TCHkaoKq2mIJ"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-0KJygDx3jjBK"><polyline points="20 6 9 17 4 12" id="cc-id-eWEUGgTpO4dR"></polyline></svg></span><span id="cc-id-Mg7SAvu00cGk">Both legs finally the same size again</span></li><li id="cc-id-rClsjGsvqHPe"><span class="nv-cond-check" id="cc-id-tRhPQyZf3CL0"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-7lR2NIZ99Fhp"><polyline points="20 6 9 17 4 12" id="cc-id-5jBoEkHKR7me"></polyline></svg></span><span id="cc-id-2uF5IAy1IMRD">Water pills couldn't do what this did</span></li><li id="cc-id-2YCqiU0B1PZa"><span class="nv-cond-check" id="cc-id-gcVAh5XB5JEX"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-YVN6Clibio8T"><polyline points="20 6 9 17 4 12" id="cc-id-S1GOWWLVdxNq"></polyline></svg></span><span id="cc-id-IKlCRQ2inooq">Wore shorts last weekend without thinking twice</span></li></ul><div class="nv-cond-quote" id="cc-id-c98pmlXywVnk" data-layer-name="Text">"My left leg was always bigger than my right &mdash; you could tell. Three years of water pills never brought it down. Six weeks with this roller and they're finally the same size again. Wore shorts last weekend without thinking twice."</div></div><div class="nv-cond-card" id="cc-id-6y6XnYgykTTM"><img class="fk-disable-lazy nv-cond-img" src="photo6.png" alt="Tight, Shiny Skin before and after" id="cc-id-T6uqZzMlotjt" title="" href="" onclick="" target="_self" align="center" width="" height=""><div class="nv-cond-label" id="cc-id-MCGqNMxCFn1y">
-                  Tight, Shiny Skin
+                    Verified</span></div><ul class="nv-cond-benefits" id="cc-id-6trR9ES2al5I"><li id="cc-id-Oh6aPmt1ZlI8"><span class="nv-cond-check" id="cc-id-TCHkaoKq2mIJ"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-0KJygDx3jjBK"><polyline points="20 6 9 17 4 12" id="cc-id-eWEUGgTpO4dR"></polyline></svg></span><span id="cc-id-Mg7SAvu00cGk">Butt finally looks firm and smooth again</span></li><li id="cc-id-rClsjGsvqHPe"><span class="nv-cond-check" id="cc-id-tRhPQyZf3CL0"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-7lR2NIZ99Fhp"><polyline points="20 6 9 17 4 12" id="cc-id-5jBoEkHKR7me"></polyline></svg></span><span id="cc-id-2uF5IAy1IMRD">Body creams couldn't do what this did</span></li><li id="cc-id-2YCqiU0B1PZa"><span class="nv-cond-check" id="cc-id-gcVAh5XB5JEX"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-YVN6Clibio8T"><polyline points="20 6 9 17 4 12" id="cc-id-S1GOWWLVdxNq"></polyline></svg></span><span id="cc-id-IKlCRQ2inooq">Wore a swimsuit last weekend without hiding</span></li></ul><div class="nv-cond-quote" id="cc-id-c98pmlXywVnk" data-layer-name="Text">"My butt went completely flat - like it just deflated out of nowhere. Years of body creams did absolutely nothing. Six weeks rolling this on and the skin actually started firming up. Wore a swimsuit at the lake without covering up."</div></div><div class="nv-cond-card" id="cc-id-6y6XnYgykTTM"><img class="fk-disable-lazy nv-cond-img" src="photo6.png" alt="Crepey Belly before and after" id="cc-id-T6uqZzMlotjt" title="" href="" onclick="" target="_self" align="center" width="" height=""><div class="nv-cond-label" id="cc-id-MCGqNMxCFn1y">
+                  Crepey Belly
                 </div><div class="nv-cond-name-row" id="cc-id-uqo267EIkEYD"><span class="nv-cond-name" id="cc-id-s26YgAzmjluK">Carol T.</span><span class="nv-cond-badge" id="cc-id-XL4RrRcm1JX8"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-OMVaXvIGsArf"><polyline points="20 6 9 17 4 12" id="cc-id-W3GMu3AWoyla"></polyline></svg>
-                    Verified</span></div><ul class="nv-cond-benefits" id="cc-id-mJdR0yOKzCJy"><li id="cc-id-fcN1qCq2yB0w"><span class="nv-cond-check" id="cc-id-N6lHSSh679Af"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-p9UXG11l9GZI"><polyline points="20 6 9 17 4 12" id="cc-id-yL9wD9isgC0p"></polyline></svg></span><span id="cc-id-7Ebpg0s6XHgW">That tight, splitting feeling finally eased</span></li><li id="cc-id-3KWJ0ub6j9Uj"><span class="nv-cond-check" id="cc-id-TduAcweKW7tD"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-fzKA7mE4nTp6"><polyline points="20 6 9 17 4 12" id="cc-id-EmJ6o1RsOAML"></polyline></svg></span><span id="cc-id-GdnA5Xgy9gjx">Skin feels soft again &mdash; not stretched drum-tight</span></li><li id="cc-id-SOY0MgQljAVX"><span class="nv-cond-check" id="cc-id-wSAOUDLS66db"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-pqiCB8pcAKcU"><polyline points="20 6 9 17 4 12" id="cc-id-zye0LNveazdS"></polyline></svg></span><span id="cc-id-I6VLhuzhwOsO">Socks don't leave deep dents anymore</span></li></ul><div class="nv-cond-quote" id="cc-id-3IsnVYAOw7yF">"My calves were so swollen the skin was shiny and felt like it might split. A few weeks rolling this on and the tightness finally let up. My socks don't leave deep marks anymore &mdash; that's how I know it's working."</div></div></div><div class="nv-cond-arrow nv-next" id="nv-cond-next" style="opacity: 1;"><i class="fa fa-angle-right" id="cc-id-se4QEeIsePbX"></i></div></div><div id="nv-cond-dots"><div class="nv-cond-dot active" data-index="0" id="cc-id-TIHfD7SNmBxa"></div><div class="nv-cond-dot" data-index="1" id="cc-id-0gGCdLznqVaF"></div><div class="nv-cond-dot" data-index="2" id="cc-id-zzmTkB5IFeoF"></div><div class="nv-cond-dot" data-index="3" id="cc-id-oPhbHRjERiaC"></div><div class="nv-cond-dot" data-index="4" id="cc-id-iLUUodVdUY6W"></div><div class="nv-cond-dot" data-index="5" id="cc-id-VHRh6oXdikeO"></div></div></div><div data-box="true" data-secondsdelay="" id="cc-id-ldw7tDvpFP1B" animate="" style="display: none;"><i data-text="text" data-secondsdelay="" align="left" id="cc-id-xLA95swdur4p"><span id="cc-id-C0y1hmzU7Y8B"><b data-text="text" data-secondsdelay="" id="cc-id-svG7W9Edr947" style=""><span class="font-000000FF cc-rte-styled rte-styled-text" id="cc-id-Fe9iQffDrQqj">4 Reasons Why Nurovita <br id="cc-id-Xkf04jOaEgPL">Natural Cooling Roller Actually Works</span></b></span></i><div class="fk-row" id="cc-id-gLeLfTa4hI18" style="display: none;"></div></div><div data-box="true" style="padding-right: 10px; padding-left: 10px; width: 100%;" id="cc-id-csjrYCwECibD"><div data-text="text" data-secondsdelay="" id="cc-id-NC8UqPglxFgp" data-cc-desktop="" data-cc-tabletlarge="" data-cc-tablet="" data-cc-mobilelarge="" data-cc-mobile="" spellcheck="false" style="text-align: center !important;">
-            Why This Works When Pills Didn&rsquo;t
-            <br class="rte-styled-text" id="cc-id-TCyB4d40h0Kc"></div></div><div data-box="true" data-secondsdelay="" id="cc-id-LMd9BYM1pXJK" class="contained"><div data-box="true" style="padding: 12px 10px; width: 100%;" id="cc-id-Z2BgzelXsWh6" data-element-absolute=""><div data-box="true" data-secondsdelay="" id="cc-id-Z0VqSOzy2fk6" class="contained"><div data-box="true" data-secondsdelay="" id="cc-id-QDYqwVUf6pM4"><div data-text="text" data-secondsdelay="" id="cc-id-w1uYqARP5O33" data-cc-desktop="" data-cc-tabletlarge="" data-cc-tablet="" data-cc-mobilelarge="" data-cc-mobile="" spellcheck="false">Step 1: Get Past the Skin Barrier
+                    Verified</span></div><ul class="nv-cond-benefits" id="cc-id-mJdR0yOKzCJy"><li id="cc-id-fcN1qCq2yB0w"><span class="nv-cond-check" id="cc-id-N6lHSSh679Af"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-p9UXG11l9GZI"><polyline points="20 6 9 17 4 12" id="cc-id-yL9wD9isgC0p"></polyline></svg></span><span id="cc-id-7Ebpg0s6XHgW">That crepey, deflated belly finally smoothing</span></li><li id="cc-id-3KWJ0ub6j9Uj"><span class="nv-cond-check" id="cc-id-TduAcweKW7tD"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-fzKA7mE4nTp6"><polyline points="20 6 9 17 4 12" id="cc-id-EmJ6o1RsOAML"></polyline></svg></span><span id="cc-id-GdnA5Xgy9gjx">Belly smooth again &mdash; not saggy when bending</span></li><li id="cc-id-SOY0MgQljAVX"><span class="nv-cond-check" id="cc-id-wSAOUDLS66db"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" id="cc-id-pqiCB8pcAKcU"><polyline points="20 6 9 17 4 12" id="cc-id-zye0LNveazdS"></polyline></svg></span><span id="cc-id-I6VLhuzhwOsO">Don't hide behind baggy clothes anymore</span></li></ul><div class="nv-cond-quote" id="cc-id-3IsnVYAOw7yF">"My belly looked like a deflated balloon - couldn't bend without seeing all these folds. A few weeks rolling this on and the skin actually started tightening. Bent forward yesterday and it wasn't the same mess - that's when I knew."</div></div><div class="nv-cond-card"><img class="fk-disable-lazy nv-cond-img" src="photo7.png" alt="Weight-Loss Crepey Skin before and after"><div class="nv-cond-label">Weight-Loss Crepey Skin</div><div class="nv-cond-name-row"><span class="nv-cond-name">Sharon L.</span><span class="nv-cond-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>Verified</span></div><ul class="nv-cond-benefits"><li><span class="nv-cond-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span>That deflated, saggy look finally going away</span></li><li><span class="nv-cond-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span>Body finally matches how the scale feels</span></li><li><span class="nv-cond-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span>Looks good undressed &mdash; not just in clothes</span></li></ul><div class="nv-cond-quote">"Lost 60 pounds and my skin aged 20 years - loose, saggy, deflated everywhere. Every cream I tried did nothing. A few weeks rolling this on and the skin actually started bouncing back. Don't regret losing the weight anymore."</div></div></div><div class="nv-cond-arrow nv-next" id="nv-cond-next" style="opacity: 1;"><i class="fa fa-angle-right" id="cc-id-se4QEeIsePbX"></i></div></div><div id="nv-cond-dots"><div class="nv-cond-dot active" data-index="0" id="cc-id-TIHfD7SNmBxa"></div><div class="nv-cond-dot" data-index="1" id="cc-id-0gGCdLznqVaF"></div><div class="nv-cond-dot" data-index="2" id="cc-id-zzmTkB5IFeoF"></div><div class="nv-cond-dot" data-index="3" id="cc-id-oPhbHRjERiaC"></div><div class="nv-cond-dot" data-index="4" id="cc-id-iLUUodVdUY6W"></div><div class="nv-cond-dot" data-index="5" id="cc-id-VHRh6oXdikeO"></div><div class="nv-cond-dot" data-index="6"></div></div></div><div data-box="true" data-secondsdelay="" id="cc-id-ldw7tDvpFP1B" animate="" style="display: none;"><i data-text="text" data-secondsdelay="" align="left" id="cc-id-xLA95swdur4p"><span id="cc-id-C0y1hmzU7Y8B"><b data-text="text" data-secondsdelay="" id="cc-id-svG7W9Edr947" style=""><span class="font-000000FF cc-rte-styled rte-styled-text" id="cc-id-Fe9iQffDrQqj">4 Reasons Why Nurovita <br id="cc-id-Xkf04jOaEgPL">Natural Cooling Roller Actually Works</span></b></span></i><div class="fk-row" id="cc-id-gLeLfTa4hI18" style="display: none;"></div></div><div data-box="true" style="padding-right: 10px; padding-left: 10px; width: 100%;" id="cc-id-csjrYCwECibD"><div data-text="text" data-secondsdelay="" id="cc-id-NC8UqPglxFgp" data-cc-desktop="" data-cc-tabletlarge="" data-cc-tablet="" data-cc-mobilelarge="" data-cc-mobile="" spellcheck="false" style="text-align: center !important;">
+            Why This Works When Creams Failed
+            <br class="rte-styled-text" id="cc-id-TCyB4d40h0Kc"></div></div><div data-box="true" data-secondsdelay="" id="cc-id-LMd9BYM1pXJK" class="contained"><div data-box="true" style="padding: 12px 10px; width: 100%;" id="cc-id-Z2BgzelXsWh6" data-element-absolute=""><div data-box="true" data-secondsdelay="" id="cc-id-Z0VqSOzy2fk6" class="contained"><div data-box="true" data-secondsdelay="" id="cc-id-QDYqwVUf6pM4"><div data-text="text" data-secondsdelay="" id="cc-id-w1uYqARP5O33" data-cc-desktop="" data-cc-tabletlarge="" data-cc-tablet="" data-cc-mobilelarge="" data-cc-mobile="" spellcheck="false">Three Botanicals. Three Jobs. Through the Skin.
 
-<br class="rte-styled-text" id="cc-id-wC88nEMwPK00"></div><div data-text="text" data-secondsdelay="" id="cc-id-ML0Zge1wWhcG" style="" spellcheck="false"><i>Compression socks, creams, and pills never reach the leaky vessel walls where the swelling actually starts. This does.</i><div class="rte-styled-text" id="cc-id-qU42kCi3bWXj"><br class="rte-styled-text" id="cc-id-uN55N2g4RDDa"></div></div><div data-box="true" style="width: 100%;" id="cc-id-s1bullet1"><img class="fk-image-defaults fk-disable-lazy" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1769435531543_Reviews_4_.png" id="cc-id-s1icon1" title="" href="" onclick="" target="_self" alt="" align="center" width="" height=""><div data-text="text" id="cc-id-s1text1" spellcheck="false" style="font-family: Poppins !important;"><b>Natural Menthol</b> opens tiny pathways through the skin &mdash; no needles, no pain, just a cooling sensation that tells you something is finally getting through</div></div><div data-box="true" style="width: 100%;" id="cc-id-s1resultRow"><img class="fk-image-defaults fk-disable-lazy" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1769435531543_Reviews_4_.png" id="cc-id-s1resultIcon" title="" href="" onclick="" target="_self" alt="" align="center" width="" height=""><div data-text="text" id="cc-id-s1resultText" spellcheck="false" style="font-family: Poppins !important;"><b id="cc-id-azsfv4gDJ1BG">Result:</b> For the first time, ingredients reach the damaged vessel walls where the problem is</div></div></div><div data-box="true" data-secondsdelay="" id="cc-id-hYtvfZNm9qs5" data-element-absolute=""><div id="cc-id-8d3EIn2PQLPo"></div><div id="cc-id-7fajg90Q7GZ7"></div><div id="cc-id-yiWP2LQRou9q" class="embed-responsive embed-responsive-1by1"><video src="gif1done.mp4?v=3" id="cc-id-lVcvqUeh8Keh" wrapper-classes="embed-responsive-item" parentid="cc-id-flD65ZRIgLal" class="fk-disable-lazy" aspectratio="embed-responsive-1by1" rel="true" provider="so" autoplay="" muted="" playsinline="" loop=""></video></div></div></div></div></div><div data-box="true" data-secondsdelay="" id="cc-id-rJGOfAyMrWCQ" class="contained"><div data-box="true" data-secondsdelay="" id="cc-id-Q1rFK2BcbOrH" class="contained"><div data-box="true" data-secondsdelay="" id="cc-id-dpjmjMoJx8xG" data-element-absolute=""><div id="cc-id-KFIzYzxHscQ0" class="embed-responsive embed-responsive-1by1"><video src="gifs2-v2.mp4" id="cc-id-Pb10LVWMGMWs" wrapper-classes="embed-responsive-item" parentid="cc-id-K3Qbk1ybXWif" class="fk-disable-lazy" aspectratio="embed-responsive-1by1" rel="true" provider="so" autoplay="" muted="" playsinline="" loop=""></video></div></div><div data-box="true" data-secondsdelay="" id="cc-id-kxtfRNDi2Yxh"><div data-text="text" data-secondsdelay="" id="cc-id-OveZTbWf5JPS" spellcheck="false">Step 2: Deliver Powerful Botanicals
+<br class="rte-styled-text" id="cc-id-wC88nEMwPK00"></div><div data-text="text" data-secondsdelay="" id="cc-id-ML0Zge1wWhcG" style="" spellcheck="false"><i>Here's what happens when you roll it on.</i><div class="rte-styled-text" id="cc-id-qU42kCi3bWXj"><br class="rte-styled-text" id="cc-id-uN55N2g4RDDa"></div></div><div data-box="true" style="width: 100%;" id="cc-id-s1bullet1" class="nv-step1-botanical-row"><div data-text="text" id="cc-id-s1text1" spellcheck="false" style="font-family: Poppins !important;"><b>Menthol</b> &mdash; Opens tiny channels through your skin so the botanicals get underneath. That cool wave you feel? That's the door opening.</div></div><div data-box="true" style="width: 100%;" id="cc-id-s1bullet2" class="nv-step1-botanical-row"><div data-text="text" id="cc-id-s1text2" spellcheck="false" style="font-family: Poppins !important;"><b>Centella Asiatica</b> &mdash; Your collagen cells aren't dead &mdash; they went dormant when your hormones dropped. Centella wakes them up. Ten times stronger. Twenty-eight studies.</div></div><div data-box="true" style="width: 100%;" id="cc-id-s1bullet3" class="nv-step1-botanical-row"><div data-text="text" id="cc-id-s1text3" spellcheck="false" style="font-family: Poppins !important;"><b>Horse Chestnut</b> &mdash; Calms the inflammation that tears fresh collagen apart. Think of it as armor around everything Centella just built.</div></div><div data-box="true" style="width: 100%;" id="cc-id-s1resultRow" class="nv-step1-result-row"><div data-text="text" id="cc-id-s1resultText" spellcheck="false" style="font-family: Poppins !important;"><b id="cc-id-azsfv4gDJ1BG">Result:</b> That tissue-paper texture starts to smooth. Not overnight. But week by week &mdash; firmer, thicker, yours.</div></div></div><div data-box="true" data-secondsdelay="" id="cc-id-hYtvfZNm9qs5" data-element-absolute=""><div id="cc-id-8d3EIn2PQLPo"></div><div id="cc-id-7fajg90Q7GZ7"></div><div id="cc-id-yiWP2LQRou9q" class="embed-responsive embed-responsive-1by1"><video src="gif1done.mp4?v=3" id="cc-id-lVcvqUeh8Keh" wrapper-classes="embed-responsive-item" parentid="cc-id-flD65ZRIgLal" class="fk-disable-lazy" aspectratio="embed-responsive-1by1" rel="true" provider="so" autoplay="" muted="" playsinline="" loop=""></video></div></div></div></div></div><div data-box="true" data-secondsdelay="" id="cc-id-rJGOfAyMrWCQ" class="contained"><div data-box="true" data-secondsdelay="" id="cc-id-Q1rFK2BcbOrH" class="contained"><div data-box="true" data-secondsdelay="" id="cc-id-dpjmjMoJx8xG" data-element-absolute=""><img class="fk-disable-lazy nv-promise-img" src="ourpromise.png" alt="Our promise - clinically tested Centella Asiatica roller"></div><div data-box="true" data-secondsdelay="" id="cc-id-kxtfRNDi2Yxh"><div data-text="text" data-secondsdelay="" id="cc-id-OveZTbWf5JPS" spellcheck="false">Our Promise
 
-<br class="rte-styled-text" id="cc-id-ERTwN6uyNC9p"></div><div data-text="text" data-secondsdelay="" id="cc-id-HkVv3SvUJAPE" style="" spellcheck="false"><p class="whitespace-normal break-words rte-styled-text" id="cc-id-oonVHMtY4YrA"></p><p class="whitespace-normal break-words" id="cc-id-vbYAJ0okDaBu"></p><p data-start="104" data-end="186" id="cc-id-aXQaEjFRMiFb" class="rte-styled-text"></p><p class="whitespace-normal break-words" id="cc-id-RrLHcToXYlVu" data-layer-name="Text"><b id="cc-id-8hvFMdBXCvyy" data-layer-name="Text"></b></p><!--StartFragment--><p id="cc-id-lbwQ1qrcOwAv" class="rte-styled-text"></p><!--StartFragment--><p id="cc-id-pDb9aXiPoMVx" class="rte-styled-text"></p><p id="cc-id-nGj90OIaoCYw" class="rte-styled-text"><i>Once through your skin, the formula goes straight to the vessel walls &mdash; the old, leaky pipes where the swelling actually starts.</i>
-
-<br id="cc-id-H4kNL7eoajVT"></p></div><div data-box="true" style="width: 100%;" id="cc-id-K6ngLu3MRt0s"><img class="fk-image-defaults fk-disable-lazy" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1769435531543_Reviews_4_.png" id="cc-id-lpC258gurqix" title="" href="" onclick="" target="_self" alt="" align="center" width="" height=""><div data-text="text" id="cc-id-OXx2SQW43qsn" spellcheck="false" style="font-family: Poppins !important;"><b class="rte-styled-text" id="cc-id-DvNTAGN0Reop">Horse Chestnut</b> &mdash; Seals the cracks in your vessel walls from the inside so fluid stops pooling in your legs.
+<br class="rte-styled-text" id="cc-id-ERTwN6uyNC9p"></div><div data-text="text" data-secondsdelay="" id="cc-id-HkVv3SvUJAPE" style="" spellcheck="false"><p id="cc-id-nGj90OIaoCYw" class="rte-styled-text nv-promise-copy">Your trust means everything to us. Our roller is clinically tested with 8% Centella Asiatica &mdash; pure, gentle, and safe for sensitive skin.</p></div><div data-box="true" style="width: 100%;" id="cc-id-K6ngLu3MRt0s"><img class="fk-image-defaults fk-disable-lazy" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1769435531543_Reviews_4_.png" id="cc-id-lpC258gurqix" title="" href="" onclick="" target="_self" alt="" align="center" width="" height=""><div data-text="text" id="cc-id-OXx2SQW43qsn" spellcheck="false" style="font-family: Poppins !important;"><b class="rte-styled-text" id="cc-id-DvNTAGN0Reop">Horse Chestnut</b> &mdash; Seals the cracks in your vessel walls from the inside so fluid stops pooling in your legs.
 
 </div></div><div data-box="true" style="width: 100%;" id="cc-id-KO3hkMft8zvB"><img class="fk-image-defaults fk-disable-lazy" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1769435531543_Reviews_4_.png" id="cc-id-yPZyJKuUe6UV" title="" href="" onclick="" target="_self" alt="" align="center" width="" height=""><div data-text="text" id="cc-id-YvnxzoNuXMC4" spellcheck="false" style="font-family: Poppins !important;"><b class="rte-styled-text" id="cc-id-1OFnIqPcbJDz">Ginger Root + Chamomile</b> &mdash; Calm the inflammation that&rsquo;s been eating your collagen faster than your body can replace it.
 
@@ -14120,7 +15007,7 @@ body.dom-pending * {
         // 3. Insert new Spring Sale banner at the very top of body
         var newBanner = document.createElement('div');
         newBanner.id = 'nv-spring-banner';
-        newBanner.innerHTML = '<a href="#nv-best-offer" style="display:block;"><img src="https://michael-bbz.github.io/nurovita-sp-marjorie/spring-sale-banner.png" alt="Spring Sale &mdash; Up to 67% Off" class="fk-disable-lazy nv-banner-desktop" style="width:100%;height:auto;display:block;cursor:pointer;"><img src="https://michael-bbz.github.io/nurovita-sp-marjorie/spring-sale-banner-mobile.png" alt="Spring Sale &mdash; Up to 67% Off" class="fk-disable-lazy nv-banner-mobile" style="width:100%;height:auto;display:none;cursor:pointer;"></a><style>.nv-banner-desktop{display:block!important;}.nv-banner-mobile{display:none!important;}@media(max-width:768px){.nv-banner-desktop{display:none!important;}.nv-banner-mobile{display:block!important;}}</style>';
+        newBanner.innerHTML = '<a href="#nv-best-offer" style="display:block;"><img src="summer-sale-desktop.jpg" alt="Summer Sale &mdash; Up to 67% Off" class="fk-disable-lazy nv-banner-desktop" style="width:100%;height:auto;display:block;cursor:pointer;"><img src="summer-sale-mobile.jpg" alt="Summer Sale &mdash; Up to 67% Off" class="fk-disable-lazy nv-banner-mobile" style="width:100%;height:auto;display:none;cursor:pointer;"></a><style>.nv-banner-desktop{display:block!important;}.nv-banner-mobile{display:none!important;}@media(max-width:768px){.nv-banner-desktop{display:none!important;}.nv-banner-mobile{display:block!important;}}</style>';
         newBanner.style.cssText = 'margin:0;padding:0;line-height:0;';
         document.body.insertBefore(newBanner, document.body.firstChild);
 
@@ -14355,7 +15242,7 @@ body.dom-pending * {
             .nv-gift-card { height:94px; min-height:94px; }
             .nv-gift-name { font-size:10px; line-height:1.12; margin-top:7px; }
           }
-        </style><div class="nv-hero-grid"><!-- LEFT: Product Image --><div class="nv-hero-img"><img class="fk-disable-lazy" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1773316412222_hf_20260225_121430_6d45e93d_48b3_4c3f_a918_484e97ad0858.webp" alt="Natural Cooling Roller"><img src="https://assets.imagehub.io/8c9e1110-8218-11ef-a556-ffaacc6dbefa/1775825101659_Customer_Review.webp" alt="Customer review" class="fk-disable-lazy nv-hero-fb-comment"></div><!-- RIGHT: Content --><div class="nv-hero-content"><div class="nv-sale-proof"><span class="nv-trust-stars" aria-label="5 stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span>Rated 4.8 / 5.0 | Excellent</span></div><h1 class="nv-sale-title">Natural Cooling Roller</h1><p class="nv-sale-subtitle">Strengthens your vessel walls to ease heaviness, reduce swelling, and calm inflammation at the source.</p><div class="nv-amla-benefits" aria-label="Nurovita key benefits"><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Vessel Walls</b> – Your legs holding fluid back again</span></div><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Collagen</b> – Supports healthy vessel strength naturally</span></div><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Swelling</b> – Supports lighter ankles and calves</span></div><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Circulation</b> – Supports healthy fluid flow in your legs</span></div></div><div class="nv-pack-grid nv-pack-grid-reference" aria-label="Choose your Nurovita pack"><a class="nv-pack-card nv-pack-side" href="#nv-best-offer" data-pack="1" aria-pressed="false"><span class="nv-pack-title">Buy One</span><img class="nv-pack-img fk-disable-lazy" src="1x.png" alt="1 Nurovita Cooling Roller"><span class="nv-pack-save">Save $10.00</span><span class="nv-pack-price">$29.99</span><span class="nv-pack-compare">$39.99</span></a><a class="nv-pack-card nv-pack-featured is-selected" href="#nv-best-offer" data-pack="3" aria-pressed="true"><span class="nv-pack-badge">Most Popular</span><span class="nv-pack-title">Buy 2 Get<br>1 <strong>FREE</strong></span><img class="nv-pack-img fk-disable-lazy" src="3x.png" alt="3 Nurovita Cooling Rollers"><span class="nv-pack-save">Save $20.00</span><span class="nv-pack-price">$59.99</span><span class="nv-pack-compare">$79.99</span></a><a class="nv-pack-card nv-pack-side" href="#nv-best-offer" data-pack="4" aria-pressed="false"><span class="nv-pack-badge nv-pack-soft-badge">Free Shipping</span><span class="nv-pack-title">Buy 3 Get<br>2 <strong>FREE</strong></span><img class="nv-pack-img fk-disable-lazy" src="5x.png" alt="5 Nurovita Cooling Rollers"><span class="nv-pack-save">Save $30.00</span><span class="nv-pack-price">$89.99</span><span class="nv-pack-compare">$119.99</span></a></div><div class="nv-stock-line"><span class="nv-stock-dot" aria-hidden="true"></span><span>In Stock, ready to ship - arrives by June 20th</span></div><a class="nv-hero-cta nv-offer-cta" href="#">Get 67% Off Today <span class="nv-hero-cta-arrow">&#8594;</span></a><p class="nv-subscribe-note">By default, your selected package will continue to be shipped and billed automatically (every 1 or 2 months) unless you choose to skip, pause, cancel, or select the one-time purchase option below.</p><div class="nv-checkout-strip"><span class="nv-checkout-label"><img class="nv-checkout-icon fk-disable-lazy" src="https://alevia.com/cdn/shop/files/shipment-icon.svg?v=1769882221" alt="" aria-hidden="true">Fast Delivery</span><span class="nv-checkout-label"><img class="nv-checkout-icon fk-disable-lazy" src="https://alevia.com/cdn/shop/files/checkout-icon.svg?v=1769882221" alt="" aria-hidden="true">Secure Checkout</span><img class="nv-payment-badges fk-disable-lazy" src="https://alevia.com/cdn/shop/files/Alevia-Payment-Badges_8d92cedb-2466-4afd-a730-3f1cd34ea9a1.webp?v=1764053470" alt="Accepted payment methods"></div><ul class="nv-afterpay-list" aria-label="Auto refill benefits"><li>Refilled every month</li><li>Skip, Pause, or Cancel Anytime</li></ul></div></div>
+        </style><div class="nv-hero-grid"><!-- LEFT: Product Image --><div class="nv-hero-img"><img class="fk-disable-lazy" src="https://assets.imagehub.io/dc45bbf0-81eb-11ef-a2da-133f014b1a7b/1773316412222_hf_20260225_121430_6d45e93d_48b3_4c3f_a918_484e97ad0858.webp" alt="Natural Cooling Roller"><img src="com.webp" alt="Customer review" class="fk-disable-lazy nv-hero-fb-comment"></div><!-- RIGHT: Content --><div class="nv-hero-content"><div class="nv-sale-proof"><span class="nv-trust-stars" aria-label="5 stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></span><span>Rated 4.8 / 5.0 | Excellent</span></div><h1 class="nv-sale-title">Natural Cooling Roller</h1><p class="nv-sale-subtitle">Feeds your starving collagen to smooth crepey texture, tighten loose skin, and restore bounce at the source.</p><div class="nv-amla-benefits" aria-label="Nurovita key benefits"><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Collagen</b> – Dormant cells producing collagen again</span></div><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Penetration</b> – Actives reach deeper than cream can</span></div><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Elasticity</b> – Supports firmer thighs, arms, and belly</span></div><div class="nv-amla-benefit"><span class="nv-amla-check" aria-hidden="true">&#10003;</span><span><b>Barrier</b> – Protects fresh collagen from breaking down</span></div></div><div class="nv-pack-grid nv-pack-grid-reference" aria-label="Choose your Nurovita pack"><a class="nv-pack-card nv-pack-side" href="#nv-best-offer" data-pack="1" aria-pressed="false"><span class="nv-pack-title">Buy One</span><img class="nv-pack-img fk-disable-lazy" src="1x.png" alt="1 Nurovita Cooling Roller"><span class="nv-pack-save">Save $10.00</span><span class="nv-pack-price">$29.99</span><span class="nv-pack-compare">$39.99</span></a><a class="nv-pack-card nv-pack-featured is-selected" href="#nv-best-offer" data-pack="3" aria-pressed="true"><span class="nv-pack-badge">Most Popular</span><span class="nv-pack-title">Buy 2 Get<br>1 <strong>FREE</strong></span><img class="nv-pack-img fk-disable-lazy" src="3x.png" alt="3 Nurovita Cooling Rollers"><span class="nv-pack-save">Save $20.00</span><span class="nv-pack-price">$59.99</span><span class="nv-pack-compare">$79.99</span></a><a class="nv-pack-card nv-pack-side" href="#nv-best-offer" data-pack="4" aria-pressed="false"><span class="nv-pack-badge nv-pack-soft-badge">Biggest Savings</span><span class="nv-pack-title">Buy 3 Get<br>2 <strong>FREE</strong></span><img class="nv-pack-img fk-disable-lazy" src="5x.png" alt="5 Nurovita Cooling Rollers"><span class="nv-pack-save">Save $30.00</span><span class="nv-pack-price">$89.99</span><span class="nv-pack-compare">$119.99</span></a></div><div class="nv-hero-gifts" aria-label="Free gifts included today"><p class="nv-gift-lead">Today only: 4 FREE gifts with your first order.</p><div class="nv-gift-grid"><div class="nv-gift-item"><div class="nv-gift-card"><span class="nv-gift-ribbon">FREE</span><img class="fk-disable-lazy nv-gift-img" src="free.png" alt="Free shipping gift"></div><div class="nv-gift-name">FREE Shipping</div></div><div class="nv-gift-item"><div class="nv-gift-card"><span class="nv-gift-ribbon">FREE</span><img class="fk-disable-lazy nv-gift-img" src="habbit.png" alt="Habit tracker gift"></div><div class="nv-gift-name">Habit Tracker</div></div><div class="nv-gift-item"><div class="nv-gift-card"><span class="nv-gift-ribbon">FREE</span><img class="fk-disable-lazy nv-gift-img" src="moneyback.png" alt="Extended guarantee gift"></div><div class="nv-gift-name">Extended Guarantee</div></div><div class="nv-gift-item nv-gift-ebook"><div class="nv-gift-card"><span class="nv-gift-ribbon">FREE</span><span class="nv-gift-lock" aria-hidden="true"></span></div><div class="nv-gift-name"></div></div></div></div><a class="nv-hero-cta nv-offer-cta" href="#">Get 67% Off Today <span class="nv-hero-cta-arrow">&#8594;</span></a><div class="nv-stock-line"><span class="nv-stock-dot" aria-hidden="true"></span><span>In Stock, ready to ship - arrives by June 20th</span></div><p class="nv-subscribe-note">By default, your selected package will continue to be shipped and billed automatically (every 1 or 2 months) unless you choose to skip, pause, cancel, or select the one-time purchase option below.</p><div class="nv-checkout-strip"><span class="nv-checkout-label"><img class="nv-checkout-icon fk-disable-lazy" src="https://alevia.com/cdn/shop/files/shipment-icon.svg?v=1769882221" alt="" aria-hidden="true">Fast Delivery</span><span class="nv-checkout-label"><img class="nv-checkout-icon fk-disable-lazy" src="https://alevia.com/cdn/shop/files/checkout-icon.svg?v=1769882221" alt="" aria-hidden="true">Secure Checkout</span><img class="nv-payment-badges fk-disable-lazy" src="https://alevia.com/cdn/shop/files/Alevia-Payment-Badges_8d92cedb-2466-4afd-a730-3f1cd34ea9a1.webp?v=1764053470" alt="Accepted payment methods"></div><ul class="nv-afterpay-list" aria-label="Auto refill benefits"><li>Refilled every month</li><li>Skip, Pause, or Cancel Anytime</li></ul></div></div>
         `;
 
         // Insert after the sticky header (banner > sticky header > hero)
@@ -14456,65 +15343,75 @@ body.dom-pending * {
         var condCards = '';
         condCards += nvCondCard(
           'photo1.png',
-          'Swollen, Heavy Legs before and after',
-          'Swollen, Heavy Legs',
+          'Crepey Thighs before and after',
+          'Crepey Thighs',
           'Linda K.',
-          'Shoes fit all day &mdash; not just the morning',
-          'That heavy, tight feeling finally lifted',
-          'Walking without needing to stop and rest',
-          'My legs swell from my heart condition and by evening I can barely get my shoes off. A few weeks rolling this on, the heaviness finally lifts. It\'s the first thing that\'s actually made a difference &mdash; I won\'t go a day without it.'
+          'Thighs look smooth &mdash; not just standing up',
+          'That crepey, crinkled texture finally gone',
+          'Sitting without tugging a towel over them',
+          'My thighs went crepey out of nowhere - hadn\'t worn shorts in three years. A few weeks rolling this on, that crinkled texture actually started smoothing out. Sat by the pool last weekend and didn\'t reach for a towel - nothing else even came close.'
         );
         condCards += nvCondCard(
           'photo2.png',
-          'Swollen Ankles before and after',
-          'Swollen Ankles',
+          'Crepey Arms before and after',
+          'Crepey Arms',
           'Diane M.',
-          'Ankle bones visible again by evening',
-          'Shoes fit all day &mdash; not just mornings',
-          'No more sock marks pressed into skin',
-          'By 3 PM my ankles would be so swollen I couldn\'t get my shoes back on. About a month using this once a day and I can actually see my ankle bones again &mdash; my shoes fit all day now. I almost cried the first time I noticed.'
+          'Upper arms smooth again in the mirror',
+          'Tank tops on again &mdash; not just at home',
+          'No more tugging sleeves over my elbows',
+          'My arms went crepey out of nowhere - hadn\'t gone sleeveless in years. About a month rolling this on every night and that crinkled texture actually started smoothing. Put on a sleeveless dress last weekend without even thinking - I almost cried in the mirror.'
         );
         condCards += nvCondCard(
           'photo3.png',
-          'Hot, Painful Legs before and after',
-          'Hot, Painful Legs',
+          'Fragile, Bruise-Prone Skin before and after',
+          'Fragile, Bruise-Prone Skin',
           'Nancy M.',
-          'That burning feeling finally quieted down',
-          'Sleeping through the night again',
-          'Legs don\'t throb by evening anymore',
-          'The burning when I\'d lay down at night was the worst &mdash; some nights I just couldn\'t sleep. About a week in, that hot throbbing ache finally calmed down. For the first time in years my legs don\'t hurt by dinner.'
+          'That tissue-paper skin finally firming up',
+          'Shorts on again without even thinking',
+          'Shins don\'t bruise from every bump now',
+          'I\'d bump my shin and have a purple mark for weeks - my legs were covered in them. About a month in, the bruises started fading and new ones barely showed. First summer in years I\'m not hiding my legs.'
         );
         condCards += nvCondCard(
           'photo4.png',
-          'Varicose Veins before and after',
-          'Varicose Veins',
+          'Crepey Hands before and after',
+          'Crepey Hands',
           'Barbara S.',
-          'Veins noticeably less visible after six weeks',
-          'Confident enough to show her legs again',
-          'Her daughter noticed before she said a word',
-          'I stopped wearing dresses years ago because of my veins. Six weeks in and they\'ve faded so much my daughter noticed before I even said anything. I wore a skirt to church last Sunday.'
+          'Hands noticeably smoother after a few weeks',
+          'Hands don\'t give away her age anymore',
+          'Her husband noticed before she said a word',
+          'I hid my hands - they looked years older than my face. A few weeks in and my husband noticed before I said a word. Reached across the dinner table without thinking.'
         );
         condCards += nvCondCard(
           'photo5.png',
-          'One Leg Bigger Than the Other before and after',
-          'One Leg Bigger Than the Other',
+          'Crepey Butt before and after',
+          'Crepey Butt',
           'Gary H.',
-          'Both legs finally the same size again',
-          'Water pills couldn\'t do what this did',
-          'Wore shorts last weekend without thinking twice',
-          'My left leg was always bigger than my right &mdash; you could tell. Three years of water pills never brought it down. Six weeks with this roller and they\'re finally the same size again. Wore shorts last weekend without thinking twice.'
+          'Butt finally looks firm and smooth again',
+          'Body creams couldn\'t do what this did',
+          'Wore a swimsuit last weekend without hiding',
+          'My butt went completely flat - like it just deflated out of nowhere. Years of body creams did absolutely nothing. Six weeks rolling this on and the skin actually started firming up. Wore a swimsuit at the lake without covering up.'
         );
         condCards += nvCondCard(
           'photo6.png',
-          'Tight, Shiny Skin before and after',
-          'Tight, Shiny Skin',
+          'Crepey Belly before and after',
+          'Crepey Belly',
           'Carol T.',
-          'That tight, splitting feeling finally eased',
-          'Skin feels soft again &mdash; not stretched drum-tight',
-          'Socks don\'t leave deep dents anymore',
-          'My calves were so swollen the skin was shiny and felt like it might split. A few weeks rolling this on and the tightness finally let up. My socks don\'t leave deep marks anymore &mdash; that\'s how I know it\'s working.'
+          'That crepey, deflated belly finally smoothing',
+          'Belly smooth again &mdash; not saggy when bending',
+          'Don\'t hide behind baggy clothes anymore',
+          'My belly looked like a deflated balloon - couldn\'t bend without seeing all these folds. A few weeks rolling this on and the skin actually started tightening. Bent forward yesterday and it wasn\'t the same mess - that\'s when I knew.'
         );
 
+        condCards += nvCondCard(
+          'photo7.png',
+          'Weight-Loss Crepey Skin before and after',
+          'Weight-Loss Crepey Skin',
+          'Sharon L.',
+          'That deflated, saggy look finally going away',
+          'Body finally matches how the scale feels',
+          'Looks good undressed &mdash; not just in clothes',
+          'Lost 60 pounds and my skin aged 20 years - loose, saggy, deflated everywhere. Every cream I tried did nothing. A few weeks rolling this on and the skin actually started bouncing back. Don\'t regret losing the weight anymore.'
+        );
         var condHTML = '';
         condHTML += '<style>' + condCSS + '</style>';
         condHTML += '<h2 id="nv-cond-heading">The Triple-Action European Clinic Roller \u2014 Supports, Soothes & Restores Heavy, Swollen Legs From The Inside Out</h2>';
@@ -14658,8 +15555,8 @@ body.dom-pending * {
         trustHTML += '<div class="nv-trust-item">';
         trustHTML += '<div class="nv-trust-icon"><img class="fk-disable-lazy" src="https://michael-bbz.github.io/nurovita-sp-marjorie/quality-tested.png" alt="Quality Tested"></div>';
         trustHTML += '<div class="nv-trust-text">';
-        trustHTML += '<div class="nv-trust-headline">Safe With Your Medications</div>';
-        trustHTML += '<div class="nv-trust-desc">Esculin-free \u2014 no harsh chemicals, no drug ingredients</div>';
+        trustHTML += '<div class="nv-trust-headline">Safe On Fragile, Thinning Skin</div>';
+        trustHTML += '<div class="nv-trust-desc">No retinol, no harsh acids \u2014 gentle enough for skin over 55</div>';
         trustHTML += '</div></div>';
         trustHTML += '<div class="nv-trust-item">';
         trustHTML += '<div class="nv-trust-icon"><img class="fk-disable-lazy" src="https://michael-bbz.github.io/nurovita-sp-marjorie/free-us-shipping.png" alt="Free US Shipping"></div>';
@@ -14859,7 +15756,7 @@ body.dom-pending * {
         // Step 2 headline: "Support the Weak Vessels Directly" ? new
         var step2Head = document.getElementById('cc-id-OveZTbWf5JPS');
         if (step2Head) {
-          step2Head.innerHTML = 'Step 2: Deliver Powerful Botanicals<br class="rte-styled-text">';
+          step2Head.innerHTML = 'Our Promise<br class="rte-styled-text">';
         }
 
         // Step 2 body intro
@@ -15503,9 +16400,55 @@ body.dom-pending * {
     document.head.appendChild(style);
   }
 
+  function updateGiftLock(pack) {
+    var giftContent = {
+      '3': { src: '1xfree.png', alt: '1 free Natural Cooling Roller', label: '1 Cooling Roller' },
+      '4': { src: '2xfree.png', alt: '2 free Natural Cooling Rollers', label: '2 Cooling Rollers' }
+    };
+    var giftLeadText = pack === '1'
+      ? 'Today only: 3 FREE gifts with your first order.'
+      : 'Today only: 4 FREE gifts with your first order.';
+
+    document.querySelectorAll('#nv-hero .nv-gift-lead').forEach(function (lead) {
+      lead.textContent = giftLeadText;
+    });
+
+    document.querySelectorAll('#nv-hero .nv-gift-ebook').forEach(function (gift) {
+      var card = gift.querySelector('.nv-gift-card');
+      var name = gift.querySelector('.nv-gift-name');
+      var ribbon = gift.querySelector('.nv-gift-ribbon');
+      var lock = gift.querySelector('.nv-gift-lock');
+      var content = giftContent[pack];
+      var locked = !content;
+      if (!card || !name || !ribbon || !lock) return;
+
+      gift.classList.toggle('is-locked', locked);
+      gift.setAttribute('aria-disabled', locked ? 'true' : 'false');
+
+      card.innerHTML = '';
+      card.appendChild(ribbon);
+      card.appendChild(lock);
+
+      if (locked) {
+        name.textContent = '';
+        gift.setAttribute('title', 'Unlock this gift with a larger package');
+        return;
+      }
+
+      var img = document.createElement('img');
+      img.className = 'fk-disable-lazy nv-gift-img';
+      img.src = content.src;
+      img.alt = content.alt;
+      card.appendChild(img);
+      name.textContent = content.label;
+      gift.removeAttribute('title');
+    });
+  }
+
   function syncPack(pack) {
     if (!pack) return;
     ensureStyle();
+    updateGiftLock(pack);
 
     document.querySelectorAll('#nv-hero .nv-pack-card[data-pack]').forEach(function (card) {
       var selected = card.getAttribute('data-pack') === pack;
@@ -15784,6 +16727,7 @@ html body #nv-hero .nv-stock-line {
   html body #nv-hero .nv-amla-benefits,
   html body #nv-hero .nv-pack-grid-reference,
   html body #nv-hero .nv-stock-line,
+  html body #nv-hero .nv-hero-gifts,
   html body #nv-hero .nv-hero-cta,
   html body #nv-hero .nv-subscribe-note,
   html body #nv-hero .nv-checkout-strip,
@@ -15800,7 +16744,320 @@ html body #nv-hero .nv-stock-line {
     box-sizing: border-box !important;
   }
 }
-</style><style id="nv-payment-badges-size-final-css">
+</style><style id="nv-hero-intro-width-match-css">
+@media (min-width: 769px) {
+  html body #nv-hero .nv-hero-grid {
+    width: calc(100% - 48px) !important;
+    max-width: 1092px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  html body #nv-dr-intro .nv-dr-proof-row {
+    width: calc(100% - 8px) !important;
+    max-width: 1092px !important;
+    box-sizing: border-box !important;
+  }
+}
+</style><style id="nv-mobile-hero-text-first-css">
+@media (max-width: 768px) {
+  html body #nv-hero .nv-hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  html body #nv-hero .nv-hero-img,
+  html body #nv-hero .nv-hero-content {
+    display: contents !important;
+  }
+
+  html body #nv-hero .nv-sale-proof {
+    order: 1 !important;
+  }
+
+  html body #nv-hero .nv-sale-title {
+    order: 2 !important;
+  }
+
+  html body #nv-hero .nv-sale-subtitle {
+    order: 3 !important;
+  }
+
+  html body #nv-hero .nv-hero-img > img:not(.nv-hero-fb-comment) {
+    order: 4 !important;
+    width: calc(100% - 48px) !important;
+    max-width: calc(100% - 48px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  html body #nv-hero .nv-hero-gallery {
+    order: 5 !important;
+    display: grid !important;
+    grid-template-columns: 30px minmax(0, 1fr) 30px !important;
+    align-items: center !important;
+    gap: 6px !important;
+    width: calc(100% - 48px) !important;
+    max-width: 648px !important;
+    margin: 8px auto 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  html body #nv-hero .nv-hero-gallery-window {
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html body #nv-hero .nv-hero-gallery-track {
+    display: flex !important;
+    gap: 6px !important;
+    transition: transform .22s ease !important;
+  }
+
+  html body #nv-hero .nv-hero-gallery-arrow {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 999px !important;
+    border: 1px solid #d7e3e8 !important;
+    background: #fff !important;
+    color: #052f55 !important;
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    padding: 0 !important;
+  }
+
+  html body #nv-hero .nv-hero-gallery-btn {
+    flex: 0 0 calc((100% - 18px) / 4) !important;
+    width: calc((100% - 18px) / 4) !important;
+    aspect-ratio: 1 / 1 !important;
+    padding: 0 !important;
+    border: 1px solid transparent !important;
+    border-radius: 7px !important;
+    box-shadow: none !important;
+  }
+
+  html body #nv-hero .nv-hero-gallery-btn.is-active {
+    border-color: #000 !important;
+    box-shadow: none !important;
+  }
+
+  html body #nv-hero .nv-hero-gallery-btn img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 6px !important;
+    object-fit: cover !important;
+  }
+
+  html body #nv-hero .nv-hero-img > .nv-hero-fb-comment {
+    order: 15 !important;
+    width: calc(100% - 48px) !important;
+    max-width: calc(100% - 48px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  html body #nv-hero .nv-amla-benefits {
+    order: 6 !important;
+    margin-top: 14px !important;
+    margin-bottom: 14px !important;
+  }
+
+  html body #nv-hero .nv-pack-grid-reference {
+    order: 7 !important;
+    margin-top: 0 !important;
+  }
+
+  html body #nv-hero .nv-hero-gifts {
+    order: 8 !important;
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+  }
+
+  html body #nv-hero .nv-offer-cta {
+    order: 9 !important;
+    margin-top: 0 !important;
+  }
+
+  html body #nv-hero .nv-stock-line {
+    order: 10 !important;
+    justify-content: center !important;
+    margin-top: 0 !important;
+    margin-bottom: 13px !important;
+    text-align: center !important;
+  }
+
+  html body #nv-hero .nv-subscribe-note {
+    order: 11 !important;
+  }
+
+  html body #nv-hero .nv-checkout-strip {
+    order: 12 !important;
+  }
+
+  html body #nv-hero .nv-afterpay-list {
+    order: 13 !important;
+  }
+
+  html body #nv-hero .nv-buy-once-link {
+    order: 14 !important;
+  }
+
+  html body #nv-hero .nv-sale-proof,
+  html body #nv-hero .nv-sale-title,
+  html body #nv-hero .nv-sale-subtitle,
+  html body #nv-hero .nv-amla-benefits,
+  html body #nv-hero .nv-pack-grid-reference,
+  html body #nv-hero .nv-stock-line,
+  html body #nv-hero .nv-hero-gifts,
+  html body #nv-hero .nv-offer-cta,
+  html body #nv-hero .nv-buy-once-link,
+  html body #nv-hero .nv-subscribe-note,
+  html body #nv-hero .nv-checkout-strip,
+  html body #nv-hero .nv-afterpay-list {
+    width: calc(100% - 48px) !important;
+    max-width: 648px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+}
+</style><script id="nv-hero-gallery-script">
+(function () {
+  function setupGallery(gallery) {
+    if (!gallery || gallery.dataset.galleryReady === 'true') return;
+    var buttons = Array.prototype.slice.call(gallery.querySelectorAll('.nv-hero-gallery-btn'));
+    if (!buttons.length) return;
+
+    var prev = document.createElement('button');
+    var next = document.createElement('button');
+    var windowEl = document.createElement('div');
+    var track = document.createElement('div');
+
+    prev.type = 'button';
+    next.type = 'button';
+    prev.className = 'nv-hero-gallery-arrow nv-hero-gallery-prev';
+    next.className = 'nv-hero-gallery-arrow nv-hero-gallery-next';
+    prev.setAttribute('aria-label', 'Previous product images');
+    next.setAttribute('aria-label', 'Next product images');
+    prev.innerHTML = '&lsaquo;';
+    next.innerHTML = '&rsaquo;';
+    windowEl.className = 'nv-hero-gallery-window';
+    track.className = 'nv-hero-gallery-track';
+
+    buttons.forEach(function (button) {
+      track.appendChild(button);
+    });
+    windowEl.appendChild(track);
+    gallery.innerHTML = '';
+    gallery.appendChild(prev);
+    gallery.appendChild(windowEl);
+    gallery.appendChild(next);
+    gallery.dataset.galleryReady = 'true';
+    gallery.dataset.galleryIndex = '0';
+    updateGallery(gallery);
+  }
+
+  function updateGallery(gallery) {
+    var track = gallery.querySelector('.nv-hero-gallery-track');
+    var buttons = Array.prototype.slice.call(gallery.querySelectorAll('.nv-hero-gallery-btn'));
+    var prev = gallery.querySelector('.nv-hero-gallery-prev');
+    var next = gallery.querySelector('.nv-hero-gallery-next');
+    if (!track || !buttons.length) return;
+
+    var maxIndex = Math.max(0, buttons.length - 4);
+    var index = Math.max(0, Math.min(maxIndex, parseInt(gallery.dataset.galleryIndex || '0', 10) || 0));
+    var style = window.getComputedStyle(track);
+    var gap = parseFloat(style.columnGap || style.gap || '0') || 0;
+    var step = buttons[0].getBoundingClientRect().width + gap;
+
+    gallery.dataset.galleryIndex = String(index);
+    track.style.transform = 'translateX(' + (-index * step) + 'px)';
+    var activeIndex = getActiveIndex(buttons);
+    if (prev) prev.disabled = activeIndex <= 0;
+    if (next) next.disabled = activeIndex >= buttons.length - 1;
+  }
+
+  function getActiveIndex(buttons) {
+    var activeIndex = buttons.findIndex(function (button) {
+      return button.classList.contains('is-active');
+    });
+    return activeIndex >= 0 ? activeIndex : 0;
+  }
+
+  function keepActiveImageVisible(gallery, activeIndex) {
+    if (!gallery) return;
+    var buttons = Array.prototype.slice.call(gallery.querySelectorAll('.nv-hero-gallery-btn'));
+    var maxIndex = Math.max(0, buttons.length - 4);
+    var index = parseInt(gallery.dataset.galleryIndex || '0', 10) || 0;
+
+    if (activeIndex < index) {
+      index = activeIndex;
+    } else if (activeIndex > index + 3) {
+      index = activeIndex - 3;
+    }
+
+    gallery.dataset.galleryIndex = String(Math.max(0, Math.min(maxIndex, index)));
+    updateGallery(gallery);
+  }
+
+  function setGalleryImage(button) {
+    if (!button) return;
+    var hero = button.closest('#nv-hero');
+    if (!hero) return;
+    var main = hero.querySelector('.nv-hero-main-img');
+    var src = button.getAttribute('data-gallery-src');
+    if (!main || !src) return;
+    main.setAttribute('src', src);
+    hero.querySelectorAll('.nv-hero-gallery-btn').forEach(function (item) {
+      item.classList.toggle('is-active', item === button);
+    });
+  }
+
+  function initGalleries() {
+    document.querySelectorAll('#nv-hero .nv-hero-gallery').forEach(setupGallery);
+  }
+
+  document.addEventListener('click', function (event) {
+    var arrow = event.target.closest && event.target.closest('#nv-hero .nv-hero-gallery-arrow');
+    if (arrow) {
+      event.preventDefault();
+      var gallery = arrow.closest('.nv-hero-gallery');
+      if (!gallery) return;
+      var buttons = Array.prototype.slice.call(gallery.querySelectorAll('.nv-hero-gallery-btn'));
+      var direction = arrow.classList.contains('nv-hero-gallery-next') ? 1 : -1;
+      var activeIndex = getActiveIndex(buttons);
+      var nextIndex = Math.max(0, Math.min(buttons.length - 1, activeIndex + direction));
+      setGalleryImage(buttons[nextIndex]);
+      keepActiveImageVisible(gallery, nextIndex);
+      return;
+    }
+
+    var button = event.target.closest && event.target.closest('#nv-hero .nv-hero-gallery-btn');
+    if (!button) return;
+    event.preventDefault();
+    setGalleryImage(button);
+    keepActiveImageVisible(button.closest('.nv-hero-gallery'), Array.prototype.indexOf.call(button.parentNode.children, button));
+  });
+
+  window.addEventListener('resize', function () {
+    document.querySelectorAll('#nv-hero .nv-hero-gallery').forEach(updateGallery);
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGalleries);
+  } else {
+    initGalleries();
+  }
+})();
+</script><style id="nv-payment-badges-size-final-css">
 html body #nv-hero .nv-payment-badges {
   width: 310px !important;
   max-width: 86% !important;
@@ -16037,10 +17294,26 @@ html body #nv-hero .nv-buy-once-link:hover {
 }
 
 @media (max-width: 768px) {
+  html body #nv-hero .nv-checkout-strip {
+    margin-bottom: 2px !important;
+  }
+
+  html body #nv-hero .nv-afterpay-list {
+    margin: 2px auto 0 !important;
+  }
+
+  html body #nv-hero .nv-afterpay-list li {
+    margin: 4px 0 !important;
+  }
+
   html body #nv-hero .nv-buy-once-link {
-    margin: 25px auto 4px !important;
+    margin: 24px auto !important;
     font-size: 14px !important;
     line-height: 1.25 !important;
+  }
+
+  html body #nv-hero .nv-hero-img > .nv-hero-fb-comment {
+    margin-top: 0 !important;
   }
 }
 </style><script id="nv-buy-once-final-script">
@@ -16149,4 +17422,290 @@ html body #nv-hero .nv-buy-once-link:hover {
   setTimeout(lockDesktopPaymentBadge, 300);
   setTimeout(lockDesktopPaymentBadge, 1000);
 })();
-</script></body></html>
+</script><style id="nv-step1-full-bleed-css">
+html body #cc-id-LMd9BYM1pXJK {
+  width: 100vw !important;
+  max-width: none !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  margin-top: 20px !important;
+  padding: 38px max(20px, calc((100vw - 1100px) / 2)) !important;
+  border-radius: 0 !important;
+  background-color: #faf4ee !important;
+  box-sizing: border-box !important;
+}
+html body #cc-id-LMd9BYM1pXJK > #cc-id-Z2BgzelXsWh6 {
+  width: 100% !important;
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+html body #cc-id-LMd9BYM1pXJK #cc-id-Z0VqSOzy2fk6 {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: 38px !important;
+  box-sizing: border-box !important;
+}
+html body #cc-id-LMd9BYM1pXJK #cc-id-QDYqwVUf6pM4 {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+html body #cc-id-LMd9BYM1pXJK #cc-id-hYtvfZNm9qs5 {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+html body #cc-id-LMd9BYM1pXJK #cc-id-hYtvfZNm9qs5 .embed-responsive {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+@media (min-width: 769px) and (max-width: 1023px) {
+  html body #cc-id-LMd9BYM1pXJK {
+    padding: 32px max(20px, calc((100vw - 1000px) / 2)) !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK > #cc-id-Z2BgzelXsWh6 {
+    max-width: 1000px !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-Z0VqSOzy2fk6 {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 28px !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-hYtvfZNm9qs5 .embed-responsive {
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 768px) {
+  html body #cc-id-LMd9BYM1pXJK {
+    width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    margin-top: 0 !important;
+    padding: 24px 0 26px !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK > #cc-id-Z2BgzelXsWh6 {
+    width: calc(100% - 48px) !important;
+    max-width: 648px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-Z0VqSOzy2fk6 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-hYtvfZNm9qs5,
+  html body #cc-id-LMd9BYM1pXJK #cc-id-QDYqwVUf6pM4 {
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-QDYqwVUf6pM4 {
+    order: 1 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-hYtvfZNm9qs5 {
+    order: 2 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-hYtvfZNm9qs5 .embed-responsive {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+}
+</style><style id="nv-step1-botanical-copy-css">
+html body #cc-id-LMd9BYM1pXJK #cc-id-QDYqwVUf6pM4 {
+  max-width: 640px !important;
+}
+html body #cc-id-LMd9BYM1pXJK #cc-id-w1uYqARP5O33 {
+  margin: 0 0 22px !important;
+  padding: 0 !important;
+  text-align: left !important;
+  line-height: 1.16 !important;
+}
+html body #cc-id-LMd9BYM1pXJK #cc-id-ML0Zge1wWhcG {
+  margin: 0 0 22px !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+html body #cc-id-LMd9BYM1pXJK .nv-step1-botanical-row {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  margin: 0 0 18px !important;
+  padding: 0 0 0 34px !important;
+  box-sizing: border-box !important;
+}
+html body #cc-id-LMd9BYM1pXJK .nv-step1-botanical-row::before {
+  content: "✓" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 2px !important;
+  width: 23px !important;
+  height: 23px !important;
+  border-radius: 999px !important;
+  background: #17223f !important;
+  color: #fff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: Poppins, Arial, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1 !important;
+  font-weight: 800 !important;
+}
+html body #cc-id-LMd9BYM1pXJK .nv-step1-botanical-row [data-text],
+html body #cc-id-LMd9BYM1pXJK .nv-step1-result-row [data-text] {
+  font-family: Poppins, Arial, sans-serif !important;
+  color: #17222e !important;
+  font-size: 18px !important;
+  line-height: 1.34 !important;
+  font-weight: 400 !important;
+  text-align: left !important;
+}
+html body #cc-id-LMd9BYM1pXJK .nv-step1-botanical-row b,
+html body #cc-id-LMd9BYM1pXJK .nv-step1-result-row b {
+  font-weight: 800 !important;
+  color: #17222e !important;
+}
+html body #cc-id-LMd9BYM1pXJK .nv-step1-result-row {
+  display: block !important;
+  width: 100% !important;
+  margin: 20px 0 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+@media (max-width: 768px) {
+  html body #cc-id-LMd9BYM1pXJK #cc-id-QDYqwVUf6pM4 {
+    max-width: 100% !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-w1uYqARP5O33 {
+    margin-bottom: 16px !important;
+    text-align: left !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-ML0Zge1wWhcG {
+    margin-bottom: 18px !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK .nv-step1-botanical-row {
+    margin-bottom: 16px !important;
+    padding-left: 32px !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-s1bullet1 {
+    order: 4 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-s1bullet2 {
+    order: 5 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-s1bullet3 {
+    order: 6 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-s1resultRow {
+    order: 7 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK .nv-step1-botanical-row [data-text],
+  html body #cc-id-LMd9BYM1pXJK .nv-step1-result-row [data-text] {
+    font-size: 16px !important;
+    line-height: 1.38 !important;
+  }
+}
+</style><style id="nv-step1-mobile-tight-spacing-css">
+@media (max-width: 768px) {
+  html body #cc-id-LMd9BYM1pXJK {
+    padding-top: 14px !important;
+    padding-bottom: 16px !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK > #cc-id-Z2BgzelXsWh6 {
+    width: calc(100% - 48px) !important;
+    max-width: 648px !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-Z0VqSOzy2fk6 {
+    gap: 0 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-hYtvfZNm9qs5 {
+    margin: 0 0 14px !important;
+    padding: 0 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-hYtvfZNm9qs5 .embed-responsive {
+    margin: 0 auto !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-QDYqwVUf6pM4 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-w1uYqARP5O33 {
+    margin: 0 0 10px !important;
+    padding: 0 !important;
+    line-height: 1.16 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-ML0Zge1wWhcG {
+    margin: 0 0 14px !important;
+    padding: 0 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK .nv-step1-botanical-row {
+    margin: 0 0 14px !important;
+    padding-left: 32px !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK .nv-step1-botanical-row::before {
+    top: 1px !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK .nv-step1-result-row {
+    margin: 12px 0 0 !important;
+    padding: 0 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK .nv-step1-botanical-row [data-text],
+  html body #cc-id-LMd9BYM1pXJK .nv-step1-result-row [data-text] {
+    font-size: 16px !important;
+    line-height: 1.3 !important;
+  }
+}
+</style><style id="nv-step1-mobile-animation-order-css">
+@media (max-width: 768px) {
+  html body #cc-id-LMd9BYM1pXJK #cc-id-Z0VqSOzy2fk6 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-QDYqwVUf6pM4 {
+    display: contents !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-w1uYqARP5O33 {
+    order: 1 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-ML0Zge1wWhcG {
+    order: 2 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-hYtvfZNm9qs5 {
+    order: 3 !important;
+    display: block !important;
+    margin: 0 0 14px !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-s1bullet1 {
+    order: 4 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-s1bullet2 {
+    order: 5 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-s1bullet3 {
+    order: 6 !important;
+  }
+  html body #cc-id-LMd9BYM1pXJK #cc-id-s1resultRow {
+    order: 7 !important;
+  }
+}
+</style></body></html>
