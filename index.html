@@ -19057,6 +19057,25 @@ html body #nv-hero .nv-hero-fb-comment {
   setTimeout(removeHeroFbComment, 1000);
 })();
 </script>
+<style id="nv-stock-dot-pulse">
+html body #nv-hero .nv-stock-dot {
+  animation: nvStockDotPulse 1.8s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(19, 156, 74, 0.36);
+}
+
+@keyframes nvStockDotPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(19, 156, 74, 0.36);
+  }
+
+  50% {
+    transform: scale(1.16);
+    box-shadow: 0 0 0 6px rgba(19, 156, 74, 0);
+  }
+}
+</style>
 <style id="nv-final-offer-mobile-width-lock">
 @media (max-width: 768px) {
   html body #cc-id-21Q1T7Kw6r9y {
