@@ -19034,6 +19034,29 @@ html body #nv-hero .nv-pack-grid-reference .nv-pack-title strong {
   color: #052f55 !important;
 }
 </style>
+<style id="nv-remove-hero-fb-comment">
+html body #nv-hero .nv-hero-fb-comment {
+  display: none !important;
+}
+</style>
+<script id="nv-remove-hero-fb-comment-script">
+(function () {
+  function removeHeroFbComment() {
+    document.querySelectorAll('#nv-hero .nv-hero-fb-comment').forEach(function (commentImage) {
+      commentImage.remove();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', removeHeroFbComment);
+  } else {
+    removeHeroFbComment();
+  }
+
+  setTimeout(removeHeroFbComment, 300);
+  setTimeout(removeHeroFbComment, 1000);
+})();
+</script>
 <style id="nv-final-offer-mobile-width-lock">
 @media (max-width: 768px) {
   html body #cc-id-21Q1T7Kw6r9y {
