@@ -19183,6 +19183,84 @@ html body #cc-id-rJGOfAyMrWCQ.nv-promise-section .nv-promise-badge-label {
   }
 }
 </style>
+<style id="nv-faq-answer-paragraph-spacing">
+html body .nv-faq .nv-faq__answer-text p {
+  margin: 0 0 16px !important;
+  padding: 0 !important;
+  font: inherit !important;
+  color: inherit !important;
+  line-height: inherit !important;
+}
+
+html body .nv-faq .nv-faq__answer-text p:last-child {
+  margin-bottom: 0 !important;
+}
+</style>
+<script id="nv-faq-answer-paragraphs">
+(function () {
+  function splitAnswerText(text) {
+    var normalized = text.replace(/\s+/g, ' ').trim();
+    if (!normalized) return [];
+
+    var protectedText = normalized.replace(/([A-Z0-9._%+-]+)@([A-Z0-9.-]+\.[A-Z]{2,})/gi, function (email) {
+      return email.replace(/\./g, '[dot]');
+    });
+    var sentences = protectedText.match(/[^.!?]+[.!?]+(?:["']|&rdquo;|&rsquo;)?|[^.!?]+$/g) || [protectedText];
+    var groups = [];
+    var current = '';
+
+    sentences.forEach(function (sentence) {
+      var cleanSentence = sentence.replace(/\[dot\]/g, '.').trim();
+      if (!cleanSentence) return;
+
+      var candidate = current ? current + ' ' + cleanSentence : cleanSentence;
+      if (current && candidate.length > 150) {
+        groups.push(current);
+        current = cleanSentence;
+      } else {
+        current = candidate;
+      }
+    });
+
+    if (current) groups.push(current);
+    return groups;
+  }
+
+  function formatFaqAnswers() {
+    document.querySelectorAll('.nv-faq .nv-faq__answer-text').forEach(function (answerText) {
+      if (answerText.dataset.nvParagraphized === '1') return;
+      if (answerText.querySelector('p')) {
+        answerText.dataset.nvParagraphized = '1';
+        return;
+      }
+
+      var text = answerText.textContent;
+      var groups = splitAnswerText(text);
+      if (groups.length < 2) return;
+
+      answerText.innerHTML = groups.map(function (group) {
+        return '<p>' + group + '</p>';
+      }).join('');
+      answerText.dataset.nvParagraphized = '1';
+    });
+
+    document.querySelectorAll('.nv-faq .nv-faq__chevron--open').forEach(function (chevron) {
+      var item = chevron.closest('.nv-faq__item');
+      var answer = item && item.querySelector('.nv-faq__answer');
+      if (answer) answer.style.maxHeight = answer.scrollHeight + 24 + 'px';
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', formatFaqAnswers);
+  } else {
+    formatFaqAnswers();
+  }
+
+  setTimeout(formatFaqAnswers, 300);
+  setTimeout(formatFaqAnswers, 1200);
+})();
+</script>
 <style id="nv-final-offer-mobile-width-lock">
 @media (max-width: 768px) {
   html body #cc-id-21Q1T7Kw6r9y {
