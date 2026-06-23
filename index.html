@@ -17094,7 +17094,9 @@ html body #nv-hero .nv-buy-once-link {
   font-weight: 500 !important;
   letter-spacing: 0 !important;
   text-align: center !important;
-  text-decoration: none !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  text-decoration-thickness: 1px !important;
   text-transform: uppercase !important;
   cursor: pointer !important;
 }
@@ -17134,23 +17136,16 @@ html body #nv-hero .nv-buy-once-link:hover {
 }
 </style><script id="nv-buy-once-final-script">
 (function () {
-  var buyOnceSavings = {
-    '1': '$17.00',
-    '3': '$99.90',
-    '4': '$189.80'
-  };
-
   function getSelectedPack(root) {
     var selected = root.querySelector('.nv-pack-card.is-selected[data-pack]');
     return selected ? selected.getAttribute('data-pack') : '3';
   }
 
   function renderBuyOnce(link, pack) {
-    var savings = buyOnceSavings[pack] || buyOnceSavings['3'];
-    link.innerHTML = 'BUY ONCE - SAVE <strong>' + savings + '</strong> &rarr;';
+    link.innerHTML = 'BUY ONCE - NO SAVINGS &rarr;';
     link.setAttribute('data-selected-pack', pack);
     link.setAttribute('data-purchase-type', 'one-time');
-    link.setAttribute('aria-label', 'Buy once, save ' + savings);
+    link.setAttribute('aria-label', 'Buy once, no savings');
   }
 
   function ensureBuyOnce(forcedPack) {
