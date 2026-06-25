@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gallery Image 3 - Text Overlay</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #e0ddd8;
+    font-family: 'Inter', -apple-system, sans-serif;
+  }
+
+  .container {
+    position: relative;
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+  }
+
+  .container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* === STYLE A: Rounded badge boxes (matches 2.png style) === */
+  .style-a .text-group {
+    position: absolute;
+    top: 80px;
+    right: 55px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: flex-end;
+  }
+
+  .style-a .badge {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 18px 24px;
+    max-width: 260px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .style-a .badge-headline {
+    font-size: 19px;
+    font-weight: 700;
+    color: #1B2A4A;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+  }
+
+  .style-a .badge-sub {
+    font-size: 12.5px;
+    font-weight: 400;
+    color: #1B2A4A;
+    opacity: 0.6;
+    line-height: 1.45;
+    margin-top: 6px;
+  }
+
+  .style-a .badge-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+  }
+
+  /* === STYLE B: Clean direct text (matches 6.png / 8.png style) === */
+  .style-b .text-group {
+    position: absolute;
+    top: 72px;
+    right: 60px;
+    max-width: 320px;
+    text-align: right;
+  }
+
+  .style-b .headline {
+    font-size: 34px;
+    font-weight: 700;
+    color: #1B2A4A;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .style-b .subline {
+    font-size: 14px;
+    font-weight: 400;
+    color: #1B2A4A;
+    opacity: 0.55;
+    line-height: 1.5;
+    margin-top: 14px;
+  }
+
+  /* === STYLE C: Badge headline + clean subline combo === */
+  .style-c .text-group {
+    position: absolute;
+    top: 65px;
+    right: 50px;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+  }
+
+  .style-c .headline-badge {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(8px);
+    border-radius: 14px;
+    padding: 20px 26px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    text-align: right;
+  }
+
+  .style-c .headline-badge h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1B2A4A;
+    line-height: 1.25;
+    letter-spacing: -0.4px;
+  }
+
+  .style-c .sub-text {
+    text-align: right;
+    padding-right: 8px;
+  }
+
+  .style-c .sub-text p {
+    font-size: 13px;
+    font-weight: 400;
+    color: #1B2A4A;
+    opacity: 0.5;
+    line-height: 1.5;
+  }
+
+  /* Navigation tabs */
+  .tabs {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 100;
+    background: rgba(0,0,0,0.7);
+    padding: 8px 16px;
+    border-radius: 30px;
+  }
+
+  .tabs button {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .tabs button:hover,
+  .tabs button.active {
+    background: #fff;
+    color: #1B2A4A;
+    border-color: #fff;
+  }
+
+  .variant { display: none; }
+  .variant.active { display: block; }
+
+</style>
+</head>
+<body>
+
+<div class="tabs">
+  <button class="active" onclick="showVariant('a')">Style A — Badges</button>
+  <button onclick="showVariant('b')">Style B — Clean</button>
+  <button onclick="showVariant('c')">Style C — Combo</button>
+</div>
+
+<!-- STYLE A: Rounded badge boxes like 2.png -->
+<div class="variant active" id="variant-a">
+  <div class="container style-a">
+    <img src="3.png" alt="Woman applying Natural Comfort Balm">
+    <div class="text-group">
+      <div class="badge">
+        <svg class="badge-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 4C9.4 4 4 9.4 4 16s5.4 12 12 12 12-5.4 12-12S22.6 4 16 4zm-2 17l-5-5 1.4-1.4L14 18.2l7.6-7.6L23 12l-9 9z" fill="#1B2A4A"/>
+        </svg>
+        <div class="badge-headline">This Is What Relief Feels Like</div>
+      </div>
+      <div class="badge">
+        <svg class="badge-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 2C8.3 2 2 8.3 2 16s6.3 14 14 14 14-6.3 14-14S23.7 2 16 2zm0 25c-1.1 0-2-0.9-2-2h4c0 1.1-0.9 2-2 2zm6-4H10v-2l1-1v-4.5c0-3 1.6-5.4 4.5-6V8c0-0.8 0.7-1.5 1.5-1.5s1.5 0.7 1.5 1.5v1.5c2.9 0.6 4.5 3.1 4.5 6V20l1 1v2z" fill="#1B2A4A"/>
+        </svg>
+        <div class="badge-headline">10,000+ Happy Customers</div>
+        <div class="badge-sub">Join women who got their comfort back</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STYLE B: Clean direct text like 8.png -->
+<div class="variant" id="variant-b">
+  <div class="container style-b">
+    <img src="3.png" alt="Woman applying Natural Comfort Balm">
+    <div class="text-group">
+      <div class="headline">This Is What<br>Relief Feels Like</div>
+      <div class="subline">Join 10,000+ women who<br>got their comfort back.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STYLE C: Badge headline + clean subline -->
+<div class="variant" id="variant-c">
+  <div class="container style-c">
+    <img src="3.png" alt="Woman applying Natural Comfort Balm">
+    <div class="text-group">
+      <div class="headline-badge">
+        <h2>This Is What<br>Relief Feels Like</h2>
+      </div>
+      <div class="sub-text">
+        <p>Join 10,000+ women who<br>got their comfort back.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showVariant(id) {
+    document.querySelectorAll('.variant').forEach(v => v.classList.remove('active'));
+    document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+    document.getElementById('variant-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
